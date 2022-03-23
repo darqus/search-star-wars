@@ -1,15 +1,17 @@
-import Vue from 'vue';
-import Vuetify from 'vuetify';
-import 'vuetify/dist/vuetify.min.css';
-import ru from 'vuetify/lib/locale/ru';
+import Vue from 'vue'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
+import ru from 'vuetify/lib/locale/ru'
+import colors from 'vuetify/lib/util/colors'
 
-Vue.use(Vuetify);
+Vue.use(Vuetify)
 
 export default new Vuetify({
   theme: {
-      options: {
-        customProperties: true,
-      },
+    dark: true,
+    options: {
+      customProperties: true,
+    },
     themes: {
       light: {
         primary: '#007BFF',
@@ -20,10 +22,13 @@ export default new Vuetify({
         success: '#4CAF50',
         warning: '#FFC107'
       },
+      dark: {
+        primary: colors.blue.lighten3,
+      },
     },
   },
-    lang: {
-      locales: { ru },
-      current: 'ru',
-    },
-});
+  lang: {
+    locales: { ru },
+    current: 'ru',
+  },
+})
