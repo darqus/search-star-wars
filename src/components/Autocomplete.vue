@@ -8,6 +8,7 @@
         <v-text-field
           v-model="search"
           label="Set user"
+          :loading="isLoading"
           clearable
           @input="onInput"
         ></v-text-field>
@@ -39,6 +40,7 @@ export default {
     items: [],
     timeout: null,
     inputDelay: 500,
+    isLoading: false,
   }),
   methods: {
     onSelect(select) {
@@ -54,8 +56,10 @@ export default {
       }, this.inputDelay)
     },
     async getUsers() {
+      this.isLoading = true
       const users = await fetchUsers()
       this.items = users
+      this.isLoading = false
     },
     clear() {
       this.search = ''
