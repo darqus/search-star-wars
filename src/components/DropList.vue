@@ -3,9 +3,9 @@
     <v-list>
       <v-list-item-group>
         <v-list-item
-          @click="$emit('select', name)"
           v-for="({ name }, i) in filteredItems"
           :key="i"
+          @click="$emit('select', name)"
         >
           <v-list-item-content>
             <HighlightSearch :search="getSearch(name)" />
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { findMatch } from '@/utils/findMatch'
 import HighlightSearch from './HighlightSearch.vue'
 
 export default {
@@ -42,10 +43,7 @@ export default {
   },
   methods: {
     getSearch(string) {
-      if (!string) return
-      const rest = string.split(this.search)
-      const result = [this.search, rest[1]]
-      return result
+      return findMatch(string, this.search)
     },
   },
 }
