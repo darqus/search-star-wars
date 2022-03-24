@@ -11,6 +11,7 @@
           :loading="isLoading"
           clearable
           @input="onInput"
+          @blur="onBlur"
         ></v-text-field>
         <DropList
           v-if="items.length"
@@ -60,6 +61,10 @@ export default {
       const users = await fetchUsers()
       this.items = users
       this.isLoading = false
+    },
+    onBlur() {
+      this.items = []
+      this.timeout = null
     },
     clear() {
       this.search = ''

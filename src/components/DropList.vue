@@ -8,7 +8,10 @@
           :key="i"
         >
           <v-list-item-content>
-            <v-list-item-title v-text="name"></v-list-item-title>
+            <HighlightSearch :search="getSearch(name)" />
+            <!-- <v-list-item-title
+              v-html="getSearch(name)"
+            ></v-list-item-title> -->
           </v-list-item-content>
         </v-list-item>
       </v-list-item-group>
@@ -17,8 +20,13 @@
 </template>
 
 <script>
+import HighlightSearch from './HighlightSearch.vue'
+
 export default {
   name: 'DropList',
+  components: {
+    HighlightSearch,
+  },
   props: {
     items: Array,
     search: String,
@@ -33,6 +41,13 @@ export default {
           name.toLowerCase().startsWith(this.search.toLowerCase()) &&
           idx < this.limit
       )
+    },
+  },
+  methods: {
+    getSearch(string) {
+      const rest = string.split(this.search)
+      const result = [this.search, rest[1]]
+      return result
     },
   },
 }
