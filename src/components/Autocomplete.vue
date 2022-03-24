@@ -11,7 +11,12 @@
           clearable
           @input="onInput"
         ></v-text-field>
-        <DropList v-if="items.length" :items="items" @select="onSelect" />
+        <DropList
+          v-if="items.length"
+          :items="items"
+          :search="search"
+          @select="onSelect"
+        />
       </v-col>
       <v-col><ThemeSwitcher /></v-col>
     </v-row>
@@ -32,19 +37,30 @@ export default {
   data: () => ({
     search: '',
     items: [],
+    timeout: null,
+    inputDelay: 500,
   }),
   methods: {
     onSelect(select) {
       this.search = select
       this.items = []
     },
-    onInput() {
-      // TODO: add timeout
-      this.getUsers()
+    onInput(event) {
+      if (!event) return this.clear()
+
+      clearTimeout(this.timeout)
+      this.timeout = setTimeout(() => {
+        this.getUsers()
+      }, this.inputDelay)
     },
     async getUsers() {
       const users = await fetchUsers()
       this.items = users
+    },
+    clear() {
+      this.search = ''
+      this.items = []
+      this.timeout = null
     },
   },
 }
