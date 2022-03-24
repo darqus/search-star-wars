@@ -11,13 +11,8 @@ import Autocomplete from './components/Autocomplete'
 
 export default {
   name: 'App',
-
   components: {
     Autocomplete,
   },
-
-  data: () => ({
-    //
-  }),
 }
 </script>
