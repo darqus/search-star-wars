@@ -7,7 +7,7 @@
       <v-col>
         <v-text-field
           v-model="search"
-          label="Select user"
+          label="Set user"
           clearable
           @input="onInput"
         ></v-text-field>
