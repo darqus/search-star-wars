@@ -1,5 +1,5 @@
 <template>
-  <v-card v-if="filteredItems.length">
+  <v-card v-if="filteredItems.length && search">
     <v-list>
       <v-list-item-group>
         <v-list-item
@@ -9,9 +9,6 @@
         >
           <v-list-item-content>
             <HighlightSearch :search="getSearch(name)" />
-            <!-- <v-list-item-title
-              v-html="getSearch(name)"
-            ></v-list-item-title> -->
           </v-list-item-content>
         </v-list-item>
       </v-list-item-group>
@@ -45,6 +42,7 @@ export default {
   },
   methods: {
     getSearch(string) {
+      if (!string) return
       const rest = string.split(this.search)
       const result = [this.search, rest[1]]
       return result
