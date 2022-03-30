@@ -1,6 +1,11 @@
 <template>
   <v-list-item-title>
-    <span class="light-blue darken-1" v-text="search[0]"></span>
+    <span
+      :class="
+        $vuetify.theme.dark ? 'light-blue darken-1' : 'light-blue lighten-3'
+      "
+      v-text="search[0]"
+    ></span>
     <span v-text="search[1]"></span>
   </v-list-item-title>
 </template>
