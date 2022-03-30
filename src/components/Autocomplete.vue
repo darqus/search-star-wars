@@ -36,7 +36,9 @@
           @select="onSelect"
         />
       </v-col>
-      <v-col><ThemeSwitcher /></v-col>
+      <v-col cols="12" xs="12" sm="4">
+        <ThemeSwitcher />
+      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -80,6 +82,7 @@ export default {
       this.isLoading = true
       console.log(this.selectedApi)
       const response = await getDataFromApi(this.selectedApi)
+      console.log(response)
       const items = response?.results
       if (items.length) {
         this.items = items
