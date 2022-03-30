@@ -36,10 +36,13 @@ export default {
       const side = this.isDark ? BGS.dark : BGS.light
 
       const gradient = this.isDark
-        ? 'background-image: linear-gradient(rgba(0, 20, 40, 0.95), rgba(30, 10, 20, 0.9))'
-        : 'background-image: linear-gradient(rgba(200, 220, 240, 0.95), rgba(230, 210, 220, 0.9))'
+        ? '(rgba(0, 20, 40, 0.95), rgba(30, 10, 20, 0.9))'
+        : '(rgba(200, 220, 240, 0.95), rgba(230, 210, 220, 0.9))'
 
-      const bg = `${gradient}, url("img/${side}.jpg"); background-position: center; background-size: cover;`
+      const bg = `background-image: linear-gradient${gradient}, url("img/${side}.jpg");
+      background-position: center;
+      background-size: cover;`
+
       return bg
     },
   },
