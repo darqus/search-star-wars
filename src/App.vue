@@ -25,16 +25,17 @@ export default {
     Autocomplete,
   },
   computed: {
+    isDark() {
+      return this.$vuetify.theme.dark
+    },
     side() {
-      const isDark = this.$vuetify.theme.dark
-      const side = isDark ? SIDES.dark : SIDES.light
+      const side = this.isDark ? SIDES.dark : SIDES.light
       return side
     },
     bg() {
-      const isDark = this.$vuetify.theme.dark
-      const side = isDark ? BGS.dark : BGS.light
+      const side = this.isDark ? BGS.dark : BGS.light
 
-      const gradient = isDark
+      const gradient = this.isDark
         ? 'background-image: linear-gradient(rgba(0, 20, 40, 0.95), rgba(30, 10, 20, 0.9))'
         : 'background-image: linear-gradient(rgba(200, 220, 240, 0.95), rgba(230, 210, 220, 0.9))'
 
