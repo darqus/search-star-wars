@@ -3,7 +3,7 @@
     <v-toolbar flat height="90">
       <v-switch
         v-model="$vuetify.theme.dark"
-        hint="This toggles the global state of the Vuetify theme"
+        hint="Select you global side"
         inset
         :label="label"
         persistent-hint
@@ -20,7 +20,7 @@ export default {
   },
   computed: {
     label() {
-      const label = `Vuetify Theme ${this.side}`
+      const label = `Your side: ${this.side}`
       return label
     },
   },

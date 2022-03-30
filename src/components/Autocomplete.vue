@@ -60,6 +60,9 @@ export default {
     DropList,
     ThemeSwitcher,
   },
+  props: {
+    side: String,
+  },
   data: () => ({
     search: '',
     items: [],
@@ -70,10 +73,6 @@ export default {
     inputDelay: 500,
     isLoading: false,
     isShownDpopDown: false,
-    sides: {
-      light: 'Jedi',
-      dark: 'Sith',
-    },
   }),
   computed: {
     result() {
@@ -81,11 +80,6 @@ export default {
       if (!items.length) return '{}'
       const result = items.find(({ name }) => name === search)
       return createJSON(result)
-    },
-    side() {
-      const isDark = this.$vuetify.theme.dark
-      const side = isDark ? this.sides.dark : this.sides.light
-      return side
     },
   },
   methods: {
