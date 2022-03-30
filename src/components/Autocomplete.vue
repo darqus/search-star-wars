@@ -30,7 +30,7 @@
           @input="onInput"
         />
         <DropList
-          v-if="items.length && isShownDpopDown"
+          v-if="items.length && isShownDropDown"
           :items="items"
           :search="search"
           @select="onSelect"
@@ -72,7 +72,7 @@ export default {
     timeout: null,
     inputDelay: 500,
     isLoading: false,
-    isShownDpopDown: false,
+    isShownDropDown: false,
   }),
   computed: {
     result() {
@@ -85,13 +85,13 @@ export default {
   methods: {
     onSelect(select) {
       this.search = select
-      this.isShownDpopDown = false
+      this.isShownDropDown = false
       this.timeout = null
     },
     onInput(event) {
       if (!event) return this.clear()
 
-      this.isShownDpopDown = true
+      this.isShownDropDown = true
 
       clearTimeout(this.timeout)
       this.timeout = setTimeout(() => {
