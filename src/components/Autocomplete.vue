@@ -18,7 +18,7 @@
         <v-select
           v-model="selectedApi"
           :items="API_LIST"
-          label="What you search, Jedi? May the Force be with you"
+          :label="`What you search, ${side}? May the Force be with you`"
         ></v-select>
       </v-col>
       <v-col cols="12" xs="12" sm="4">
@@ -37,7 +37,7 @@
         />
       </v-col>
       <v-col cols="12" xs="12" sm="4">
-        <ThemeSwitcher />
+        <ThemeSwitcher :side="side" />
       </v-col>
     </v-row>
     <v-row class="mt-5" v-if="result !== '{}'">
@@ -70,6 +70,10 @@ export default {
     inputDelay: 500,
     isLoading: false,
     isShownDpopDown: false,
+    sides: {
+      light: 'Jedi',
+      dark: 'Sith',
+    },
   }),
   computed: {
     result() {
@@ -77,6 +81,11 @@ export default {
       if (!items.length) return '{}'
       const result = items.find(({ name }) => name === search)
       return createJSON(result)
+    },
+    side() {
+      const isDark = this.$vuetify.theme.dark
+      const side = isDark ? this.sides.dark : this.sides.light
+      return side
     },
   },
   methods: {
