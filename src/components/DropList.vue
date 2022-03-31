@@ -3,12 +3,12 @@
     <v-list>
       <v-list-item-group>
         <v-list-item
-          v-for="({ name }, i) in filteredItems"
+          v-for="(item, i) in filteredItems"
           :key="i"
-          @click="$emit('select', name)"
+          @click="$emit('select', item[selectedField])"
         >
           <v-list-item-content>
-            <HighlightSearch :search="getSearch(name)" />
+            <HighlightSearch :search="getSearch(item[selectedField])" />
           </v-list-item-content>
         </v-list-item>
       </v-list-item-group>
@@ -20,6 +20,8 @@
 import { findMatch } from '@/utils/findMatch'
 import HighlightSearch from './HighlightSearch.vue'
 
+const LIMIT = 5
+
 export default {
   name: 'DropList',
   components: {
@@ -27,18 +29,20 @@ export default {
   },
   props: {
     items: Array,
+    selectedApi: String,
+    selectedField: String,
     search: String,
   },
-  data: () => ({
-    limit: 5,
-  }),
   computed: {
     filteredItems() {
-      return this.items.filter(
-        ({ name }, idx) =>
-          name.toLowerCase().startsWith(this.search.toLowerCase()) &&
-          idx < this.limit
-      )
+      const { items, selectedField, search } = this
+      return items.filter((item, idx) => {
+        const result =
+          item[selectedField].toLowerCase().startsWith(search.toLowerCase()) &&
+          idx < LIMIT
+
+        return result
+      })
     },
   },
   methods: {

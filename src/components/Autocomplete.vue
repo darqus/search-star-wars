@@ -14,14 +14,23 @@
       </v-col>
     </v-row>
     <v-row class="text-center">
-      <v-col cols="12" xs="12" sm="4">
+      <v-col cols="12" xs="12" sm="3">
         <v-select
           v-model="selectedApi"
           :items="API_LIST"
+          item-text="api"
+          item-value="api"
           :label="`What you search, ${side}? May the Force be with you`"
         ></v-select>
       </v-col>
-      <v-col cols="12" xs="12" sm="4">
+      <v-col cols="12" xs="12" sm="3">
+        <v-select
+          v-model="selectedField"
+          :items="selectedFields"
+          label="Selected Field"
+        ></v-select>
+      </v-col>
+      <v-col cols="12" xs="12" sm="3">
         <v-text-field
           v-model="search"
           :label="`Set ${selectedApi}`"
@@ -33,14 +42,16 @@
           v-if="items.length && isShownDropDown"
           :items="items"
           :search="search"
+          :selected-api="selectedApi"
+          :selected-field="selectedField"
           @select="onSelect"
         />
       </v-col>
-      <v-col cols="12" xs="12" sm="4">
+      <v-col cols="12" xs="12" sm="3">
         <ThemeSwitcher :side="side" />
       </v-col>
     </v-row>
-    <v-row class="mt-5" v-if="result !== '{}'">
+    <v-row class="mt-5" v-if="result !== defaultResult">
       <v-col>
         <pre v-text="result" />
       </v-col>
@@ -49,10 +60,12 @@
 </template>
 
 <script>
-import { URL, API_LIST, getDataFromApi } from '@/utils/fetch'
+import { URL, API_LIST, getDataFromApi } from '@/utils/getDataFromApi'
 import { createJSON } from '@/utils/createJSON'
 import DropList from '@/components/DropList.vue'
 import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
+
+const INPUT_DELAY = 500
 
 export default {
   name: 'Autocomplete',
@@ -68,21 +81,36 @@ export default {
     items: [],
     URL,
     API_LIST,
-    selectedApi: API_LIST[0],
+    selectedApi: API_LIST[0].api,
+    selectedField: API_LIST[0].searchFields[0],
+    selectedFields: API_LIST[0].searchFields,
     timeout: null,
-    inputDelay: 500,
     isLoading: false,
     isShownDropDown: false,
+    defaultResult: '{}',
   }),
   computed: {
     result() {
-      const { search, items } = this
-      if (!items.length) return '{}'
-      const result = items.find(({ name }) => name === search)
+      const { search, items, selectedField } = this
+
+      if (!items.length) return this.defaultResult
+
+      const result = items.find((item) => {
+        return item[selectedField] === search
+      })
+
       return createJSON(result)
     },
   },
   methods: {
+    setSearchField() {
+      const searchField = API_LIST.find(
+        ({ api }) => api === this.selectedApi
+      ).searchFields
+
+      this.selectedField = searchField[0]
+      this.selectedFields = searchField
+    },
     onSelect(select) {
       this.search = select
       this.isShownDropDown = false
@@ -96,7 +124,7 @@ export default {
       clearTimeout(this.timeout)
       this.timeout = setTimeout(() => {
         this.getData()
-      }, this.inputDelay)
+      }, INPUT_DELAY)
     },
     async getData() {
       this.isLoading = true
@@ -111,6 +139,11 @@ export default {
       this.search = ''
       this.items = []
       this.timeout = null
+    },
+  },
+  watch: {
+    selectedApi() {
+      this.setSearchField()
     },
   },
 }
