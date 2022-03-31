@@ -51,7 +51,7 @@
         <ThemeSwitcher :side="side" />
       </v-col>
     </v-row>
-    <v-row class="mt-5" v-if="result !== defaultResult">
+    <v-row class="mt-5" v-if="items.length && result !== defaultResult">
       <v-col>
         <pre v-text="result" />
       </v-col>
@@ -77,13 +77,13 @@ export default {
     side: String,
   },
   data: () => ({
-    search: '',
     items: [],
     URL,
     API_LIST,
     selectedApi: API_LIST[0].api,
     selectedField: API_LIST[0].searchFields[0],
     selectedFields: API_LIST[0].searchFields,
+    search: '',
     timeout: null,
     isLoading: false,
     isShownDropDown: false,
@@ -91,7 +91,7 @@ export default {
   }),
   computed: {
     result() {
-      const { search, items, selectedField } = this
+      const { items, selectedField, search } = this
 
       if (!items.length) return this.defaultResult
 
