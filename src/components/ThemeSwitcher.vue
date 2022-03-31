@@ -7,7 +7,7 @@
         inset
         :label="label"
         persistent-hint
-      ></v-switch>
+      />
     </v-toolbar>
   </v-card>
 </template>
@@ -16,7 +16,10 @@
 export default {
   name: 'ThemeSwitcher',
   props: {
-    side: String,
+    side: {
+      type: String,
+      default: '',
+    },
   },
   computed: {
     label() {
