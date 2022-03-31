@@ -1,12 +1,6 @@
 <template>
-  <v-card
-    :dark="$vuetify.theme.dark"
-    flat
-  >
-    <v-toolbar
-      flat
-      height="90"
-    >
+  <v-card :dark="$vuetify.theme.dark" flat>
+    <v-toolbar flat height="90">
       <v-switch
         v-model="$vuetify.theme.dark"
         hint="Select you global side"
@@ -24,8 +18,8 @@ export default {
   props: {
     side: {
       type: String,
-      default: ''
-    } ,
+      default: '',
+    },
   },
   computed: {
     label() {

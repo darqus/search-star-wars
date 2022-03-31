@@ -34,15 +34,15 @@ export default {
     },
     selectedApi: {
       type: String,
-      default: ''
+      default: '',
     },
     selectedField: {
       type: String,
-      default: ''
+      default: '',
     },
-    search:{
+    search: {
       type: String,
-      default: ''
+      default: '',
     },
   },
   computed: {
