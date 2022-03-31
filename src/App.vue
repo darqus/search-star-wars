@@ -8,16 +8,7 @@
 
 <script>
 import Autocomplete from './components/Autocomplete'
-
-const SIDES = {
-  light: 'Jedi',
-  dark: 'Sith',
-}
-
-const BGS = {
-  light: 'jedi',
-  dark: 'sith',
-}
+import { SIDES, BGS } from './utils/constants'
 
 export default {
   name: 'App',
