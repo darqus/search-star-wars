@@ -14,11 +14,7 @@
       </v-col>
     </v-row>
     <v-row class="text-center">
-      <v-col
-        cols="12"
-        xs="12"
-        sm="3"
-      >
+      <v-col cols="12" xs="12" sm="3">
         <v-select
           v-model="selectedApi"
           :items="API_LIST"
@@ -27,22 +23,14 @@
           :label="`What you search, ${side}? May the Force be with you`"
         />
       </v-col>
-      <v-col
-        cols="12"
-        xs="12"
-        sm="3"
-      >
+      <v-col cols="12" xs="12" sm="3">
         <v-select
           v-model="selectedField"
           :items="selectedFields"
           label="Selected Field"
         />
       </v-col>
-      <v-col
-        cols="12"
-        xs="12"
-        sm="3"
-      >
+      <v-col cols="12" xs="12" sm="3">
         <v-text-field
           v-model="search"
           :label="`Set ${selectedApi}`"
@@ -59,18 +47,11 @@
           @select="onSelect"
         />
       </v-col>
-      <v-col
-        cols="12"
-        xs="12"
-        sm="3"
-      >
+      <v-col cols="12" xs="12" sm="3">
         <ThemeSwitcher :side="side" />
       </v-col>
     </v-row>
-    <v-row
-      v-if="items.length && result !== defaultResult"
-      class="mt-5"
-    >
+    <v-row v-if="items.length && result !== defaultResult" class="mt-5">
       <v-col>
         <pre v-text="result" />
       </v-col>
@@ -95,8 +76,8 @@ export default {
   props: {
     side: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   data: () => ({
     items: [],
