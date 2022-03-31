@@ -1,15 +1,7 @@
 <template>
-  <v-card :dark="$vuetify.theme.dark" flat>
-    <v-toolbar flat height="90">
-      <v-switch
-        v-model="$vuetify.theme.dark"
-        hint="Select you global side"
-        inset
-        :label="label"
-        persistent-hint
-      />
-    </v-toolbar>
-  </v-card>
+  <!-- <v-card elevation="0" class="text-center" :dark="$vuetify.theme.dark" flat> -->
+  <v-switch class="my-0" v-model="$vuetify.theme.dark" :label="label" />
+  <!-- </v-card> -->
 </template>
 
 <script>
@@ -29,3 +21,9 @@ export default {
   },
 }
 </script>
+
+<style>
+.v-messages {
+  display: none;
+}
+</style>

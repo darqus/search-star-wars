@@ -3,17 +3,20 @@
     <v-main>
       <Autocomplete :side="side" />
     </v-main>
+    <Footer :side="side" />
   </v-app>
 </template>
 
 <script>
 import Autocomplete from './components/Autocomplete'
+import Footer from '@/components/Footer.vue'
 import { SIDES, BGS } from './utils/constants'
 
 export default {
   name: 'App',
   components: {
     Autocomplete,
+    Footer,
   },
   computed: {
     isDark() {

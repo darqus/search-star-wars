@@ -14,7 +14,7 @@
       </v-col>
     </v-row>
     <v-row class="text-center">
-      <v-col cols="12" xs="12" sm="3">
+      <v-col cols="12" xs="12" sm="4">
         <v-select
           v-model="selectedApi"
           :items="API_LIST"
@@ -23,17 +23,17 @@
           :label="`What you search, ${side}? May the Force be with you`"
         />
       </v-col>
-      <v-col cols="12" xs="12" sm="3">
+      <v-col cols="12" xs="12" sm="4">
         <v-select
           v-model="selectedField"
           :items="selectedFields"
           label="Selected Field"
         />
       </v-col>
-      <v-col cols="12" xs="12" sm="3">
+      <v-col cols="12" xs="12" sm="4">
         <v-text-field
           v-model="search"
-          :label="`Set ${selectedApi}`"
+          :label="`Search ${selectedApi}`"
           :loading="isLoading"
           clearable
           @input="onInput"
@@ -46,9 +46,6 @@
           :selected-field="selectedField"
           @select="onSelect"
         />
-      </v-col>
-      <v-col cols="12" xs="12" sm="3">
-        <ThemeSwitcher :side="side" />
       </v-col>
     </v-row>
     <v-row v-if="items.length && result !== defaultResult" class="mt-5">
@@ -63,7 +60,6 @@
 import { URL, API_LIST, getDataFromApi } from '@/utils/getDataFromApi'
 import { createJSON } from '@/utils/createJSON'
 import DropList from '@/components/DropList.vue'
-import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
 
 const INPUT_DELAY = 500
 
@@ -71,7 +67,6 @@ export default {
   name: 'Autocomplete',
   components: {
     DropList,
-    ThemeSwitcher,
   },
   props: {
     side: {
@@ -157,6 +152,7 @@ export default {
 <style>
 pre {
   max-width: 550px;
-  overflow-x: auto;
+  max-height: 550px;
+  overflow: auto;
 }
 </style>
