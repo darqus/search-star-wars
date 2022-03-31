@@ -110,6 +110,8 @@ export default {
 
       this.selectedField = searchField[0]
       this.selectedFields = searchField
+
+      this.clear()
     },
     onSelect(select) {
       this.search = select
