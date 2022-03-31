@@ -14,7 +14,10 @@
 export default {
   name: 'HighlightSearch',
   props: {
-    search: Array,
+    search: {
+      type: Array,
+      default: () => [],
+    },
   },
 }
 </script>

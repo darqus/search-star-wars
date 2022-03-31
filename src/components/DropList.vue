@@ -28,10 +28,22 @@ export default {
     HighlightSearch,
   },
   props: {
-    items: Array,
-    selectedApi: String,
-    selectedField: String,
-    search: String,
+    items: {
+      type: Array,
+      default: () => [],
+    },
+    selectedApi: {
+      type: String,
+      default: ''
+    },
+    selectedField: {
+      type: String,
+      default: ''
+    },
+    search:{
+      type: String,
+      default: ''
+    },
   },
   computed: {
     filteredItems() {

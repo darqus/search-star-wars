@@ -93,7 +93,10 @@ export default {
     ThemeSwitcher,
   },
   props: {
-    side: String,
+    side: {
+      type: String,
+      default: ''
+    }
   },
   data: () => ({
     items: [],

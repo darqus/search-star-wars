@@ -22,7 +22,10 @@
 export default {
   name: 'ThemeSwitcher',
   props: {
-    side: String,
+    side: {
+      type: String,
+      default: ''
+    } ,
   },
   computed: {
     label() {
