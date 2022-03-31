@@ -5,8 +5,8 @@
         $vuetify.theme.dark ? 'light-blue darken-1' : 'light-blue lighten-3'
       "
       v-text="search[0]"
-    ></span>
-    <span v-text="search[1]"></span>
+    />
+    <span v-text="search[1]" />
   </v-list-item-title>
 </template>
 

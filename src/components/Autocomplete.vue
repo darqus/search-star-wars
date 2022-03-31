@@ -8,29 +8,41 @@
             :href="`${URL}/${selectedApi}`"
             target="_blank"
             v-text="selectedApi"
-          ></a>
+          />
           with Vuetify
         </h1>
       </v-col>
     </v-row>
     <v-row class="text-center">
-      <v-col cols="12" xs="12" sm="3">
+      <v-col
+        cols="12"
+        xs="12"
+        sm="3"
+      >
         <v-select
           v-model="selectedApi"
           :items="API_LIST"
           item-text="api"
           item-value="api"
           :label="`What you search, ${side}? May the Force be with you`"
-        ></v-select>
+        />
       </v-col>
-      <v-col cols="12" xs="12" sm="3">
+      <v-col
+        cols="12"
+        xs="12"
+        sm="3"
+      >
         <v-select
           v-model="selectedField"
           :items="selectedFields"
           label="Selected Field"
-        ></v-select>
+        />
       </v-col>
-      <v-col cols="12" xs="12" sm="3">
+      <v-col
+        cols="12"
+        xs="12"
+        sm="3"
+      >
         <v-text-field
           v-model="search"
           :label="`Set ${selectedApi}`"
@@ -47,11 +59,18 @@
           @select="onSelect"
         />
       </v-col>
-      <v-col cols="12" xs="12" sm="3">
+      <v-col
+        cols="12"
+        xs="12"
+        sm="3"
+      >
         <ThemeSwitcher :side="side" />
       </v-col>
     </v-row>
-    <v-row class="mt-5" v-if="items.length && result !== defaultResult">
+    <v-row
+      v-if="items.length && result !== defaultResult"
+      class="mt-5"
+    >
       <v-col>
         <pre v-text="result" />
       </v-col>
@@ -102,6 +121,11 @@ export default {
       return createJSON(result)
     },
   },
+  watch: {
+    selectedApi() {
+      this.setSearchField()
+    },
+  },
   methods: {
     setSearchField() {
       const searchField = API_LIST.find(
@@ -143,10 +167,12 @@ export default {
       this.timeout = null
     },
   },
-  watch: {
-    selectedApi() {
-      this.setSearchField()
-    },
-  },
 }
 </script>
+
+<style>
+pre {
+  max-width: 550px;
+  overflow-x: auto;
+}
+</style>
