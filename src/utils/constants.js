@@ -1,4 +1,9 @@
 export const SIDES = {
+  light: 'Light',
+  dark: 'Dark',
+}
+
+export const ROLES = {
   light: 'Jedi',
   dark: 'Sith',
 }

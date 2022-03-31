@@ -1,7 +1,7 @@
 <template>
   <v-app :style="bg">
     <v-main>
-      <Autocomplete :side="side" />
+      <Autocomplete :role="role" />
     </v-main>
     <Footer :side="side" />
   </v-app>
@@ -10,7 +10,7 @@
 <script>
 import Autocomplete from './components/Autocomplete'
 import Footer from '@/components/Footer.vue'
-import { SIDES, BGS } from './utils/constants'
+import { SIDES, ROLES, BGS } from './utils/constants'
 
 export default {
   name: 'App',
@@ -26,14 +26,18 @@ export default {
       const side = this.isDark ? SIDES.dark : SIDES.light
       return side
     },
+    role() {
+      const role = this.isDark ? ROLES.dark : ROLES.light
+      return role
+    },
     bg() {
-      const side = this.isDark ? BGS.dark : BGS.light
+      const currentBg = this.isDark ? BGS.dark : BGS.light
 
-      const gradient = this.isDark
+      const cureentGradient = this.isDark
         ? '(rgba(0, 20, 40, 0.95), rgba(30, 10, 20, 0.9))'
         : '(rgba(200, 220, 240, 0.95), rgba(230, 210, 220, 0.9))'
 
-      const bg = `background-image: linear-gradient${gradient}, url("img/${side}.jpg");
+      const bg = `background-image: linear-gradient${cureentGradient}, url("img/${currentBg}.jpg");
       background-position: center;
       background-size: cover;`
 

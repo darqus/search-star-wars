@@ -20,7 +20,7 @@
           :items="API_LIST"
           item-text="api"
           item-value="api"
-          :label="`What you search, ${side}? May the Force be with you`"
+          :label="`What you search, ${role}? May the Force be with you`"
         />
       </v-col>
       <v-col cols="12" xs="12" sm="4">
@@ -69,7 +69,7 @@ export default {
     DropList,
   },
   props: {
-    side: {
+    role: {
       type: String,
       default: '',
     },
