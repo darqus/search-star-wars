@@ -33,11 +33,11 @@ export default {
     bg() {
       const currentBg = this.isDark ? BGS.dark : BGS.light
 
-      const cureentGradient = this.isDark
+      const currentGradient = this.isDark
         ? '(rgba(0, 20, 40, 0.95), rgba(30, 10, 20, 0.9))'
         : '(rgba(200, 220, 240, 0.95), rgba(230, 210, 220, 0.9))'
 
-      const bg = `background-image: linear-gradient${cureentGradient}, url("img/${currentBg}.jpg");
+      const bg = `background-image: linear-gradient${currentGradient}, url("img/${currentBg}.jpg");
       background-position: center;
       background-size: cover;`
 
