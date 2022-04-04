@@ -2,7 +2,14 @@
   <v-container>
     <v-row class="text-center mt-5">
       <v-col>
-        <h1 class="display-1 font-weight-bold mb-3">
+        <h1
+          class="display-1 font-weight-bold mb-3"
+          :style="
+            $vuetify.theme.dark
+              ? 'text-shadow: 3px -2px 6px #fff; color: #fff;'
+              : 'text-shadow: 3px 2px 6px #333; color: #fff;'
+          "
+        >
           Search Star Wars
           <a
             :href="`${URL}/${selectedApi}`"
