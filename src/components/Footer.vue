@@ -1,5 +1,5 @@
 <template>
-  <v-footer padless>
+  <v-footer padless style="opacity: 0.4">
     <v-container>
       <v-row align="center">
         <v-col cols="12" xs="12" sm="6">
