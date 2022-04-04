@@ -6,8 +6,8 @@
           class="display-1 font-weight-bold mb-3"
           :style="
             $vuetify.theme.dark
-              ? 'text-shadow: 3px -2px 6px #fff; color: #fff;'
-              : 'text-shadow: 3px 2px 6px #333; color: #fff;'
+              ? 'text-shadow: 3px -1px 14px rgba(255, 255, 255, 0.6); color: #fff;'
+              : 'text-shadow: 3px 1px 14px rgba(0, 0, 0, 0.6); color: #fff;'
           "
         >
           Search Star Wars
