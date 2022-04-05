@@ -59,11 +59,11 @@
       <v-col cols="12" xs="12" sm="6">
         <pre v-text="result" />
       </v-col>
-      <v-col cols="12" xs="12" sm="6" v-if="imgURL">
-        <div class="wrapper">
+      <v-col cols="12" xs="12" sm="6">
+        <div class="wrapper" v-if="imgURL">
           <div class="img">
             <img
-              v-for="item in 3"
+              v-for="item in 2"
               :key="item"
               :src="imgURL"
               :alt="selectedApi"
@@ -203,6 +203,9 @@ pre {
 .wrapper {
   display: grid;
   place-items: center;
+  place-content: center;
+  height: 100%;
+  width: 100%;
 }
 
 .img {
@@ -225,26 +228,14 @@ pre {
 }
 
 .img img:nth-child(2) {
-  transform: scale(1.1);
-  opacity: 0.25;
+  transform: scale(1.15);
+  opacity: 0.35;
   z-index: -1;
-  filter: blur(4px);
+  filter: blur(6px);
 }
 
 .img:hover img:nth-child(2) {
-  transform: scale(1.15) rotate(-2deg);
-  filter: blur(6px);
-}
-
-.img img:nth-child(3) {
   transform: scale(1.1);
-  opacity: 0.25;
-  z-index: -1;
   filter: blur(4px);
-}
-
-.img:hover img:nth-child(3) {
-  transform: scale(1.15) rotate(2deg);
-  filter: blur(6px);
 }
 </style>
