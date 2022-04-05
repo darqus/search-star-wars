@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { findMatch } from '@/utils/findMatch'
+import { findMatch } from '@/utils/transformData'
 import HighlightSearch from './HighlightSearch.vue'
 
 const LIMIT = 5

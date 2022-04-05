@@ -6,3 +6,6 @@ export const findMatch = (string, search) => {
     string.substring(search.length)
   ]
 }
+
+
+export const getIDfromAPI_URL = (url) => +url.split('/').reverse()[1]

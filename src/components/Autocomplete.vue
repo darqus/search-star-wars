@@ -12,7 +12,7 @@
         >
           Search Star Wars
           <a
-            :href="`${URL}/${selectedApi}`"
+            :href="`${API_URL}/${selectedApi}`"
             target="_blank"
             v-text="selectedApi"
           />
@@ -24,7 +24,7 @@
       <v-col cols="12" xs="12" sm="4">
         <v-select
           v-model="selectedApi"
-          :items="API_LIST"
+          :items="SEARCH_API_LIST"
           item-text="api"
           item-value="api"
           :label="`What you search, ${role}? May the Force be with you`"
@@ -56,15 +56,29 @@
       </v-col>
     </v-row>
     <v-row v-if="items.length && result !== defaultResult" class="mt-5">
-      <v-col>
+      <v-col cols="12" xs="12" sm="6">
         <pre v-text="result" />
+      </v-col>
+      <v-col cols="12" xs="12" sm="6" v-if="imgURL">
+        <img
+          :src="imgURL"
+          :alt="selectedApi"
+          :onerror="`this.onerror=null;this.src='${IMG_PLACEHOLDER}';`"
+        />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import { URL, API_LIST, getDataFromApi } from '@/utils/getDataFromApi'
+import {
+  API_URL,
+  RESOURCE_URL,
+  IMG_PLACEHOLDER,
+  SEARCH_API_LIST,
+  getDataFromApi,
+} from '@/utils/getDataFromApi'
+import { getIDfromAPI_URL } from '@/utils/transformData'
 import { createJSON } from '@/utils/createJSON'
 import DropList from '@/components/DropList.vue'
 
@@ -83,16 +97,18 @@ export default {
   },
   data: () => ({
     items: [],
-    URL,
-    API_LIST,
-    selectedApi: API_LIST[0].api,
-    selectedField: API_LIST[0].searchFields[0],
-    selectedFields: API_LIST[0].searchFields,
+    API_URL,
+    IMG_PLACEHOLDER,
+    SEARCH_API_LIST,
+    selectedApi: SEARCH_API_LIST[0].api,
+    selectedField: SEARCH_API_LIST[0].searchFields[0],
+    selectedFields: SEARCH_API_LIST[0].searchFields,
     search: '',
     timeout: null,
     isLoading: false,
     isShownDropDown: false,
     defaultResult: '{}',
+    imgURL: null,
   }),
   computed: {
     result() {
@@ -104,6 +120,10 @@ export default {
         return item[selectedField] === search
       })
 
+      if (!result) return
+
+      this.setIMGURL(result.url)
+
       return createJSON(result)
     },
   },
@@ -114,7 +134,7 @@ export default {
   },
   methods: {
     setSearchField() {
-      const searchField = API_LIST.find(
+      const searchField = SEARCH_API_LIST.find(
         ({ api }) => api === this.selectedApi
       ).searchFields
 
@@ -146,6 +166,17 @@ export default {
         this.items = items
       }
       this.isLoading = false
+    },
+    setIMGURL(url) {
+      const id = getIDfromAPI_URL(url)
+
+      const imgApiPath = SEARCH_API_LIST.find(
+        ({ api }) => api === this.selectedApi
+      ).imgApiPath
+
+      const imgURL = `${RESOURCE_URL}/assets/img/${imgApiPath}/${id}.jpg`
+
+      this.imgURL = imgURL
     },
     clear() {
       this.search = ''
