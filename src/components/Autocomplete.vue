@@ -60,11 +60,17 @@
         <pre v-text="result" />
       </v-col>
       <v-col cols="12" xs="12" sm="6" v-if="imgURL">
-        <img
-          :src="imgURL"
-          :alt="selectedApi"
-          :onerror="`this.onerror=null;this.src='${IMG_PLACEHOLDER}';`"
-        />
+        <div class="wrapper">
+          <div class="img">
+            <img
+              v-for="item in 3"
+              :key="item"
+              :src="imgURL"
+              :alt="selectedApi"
+              :onerror="`this.onerror=null;this.src='${IMG_PLACEHOLDER}';`"
+            />
+          </div>
+        </div>
       </v-col>
     </v-row>
   </v-container>
@@ -192,5 +198,53 @@ pre {
   max-width: 550px;
   max-height: 550px;
   overflow: auto;
+}
+
+.wrapper {
+  display: grid;
+  place-items: center;
+}
+
+.img {
+  cursor: pointer;
+  position: relative;
+  width: 360px;
+  height: 360px;
+  background: rgba(0, 0, 0, 0);
+  opacity: 0.6;
+}
+
+.img img {
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: 0.5s ease-in-out;
+  box-shadow: 0 5px 8px rgba(255, 255, 255, 0.1);
+}
+
+.img img:nth-child(2) {
+  transform: scale(1.1);
+  opacity: 0.25;
+  z-index: -1;
+  filter: blur(4px);
+}
+
+.img:hover img:nth-child(2) {
+  transform: scale(1.15) rotate(-2deg);
+  filter: blur(6px);
+}
+
+.img img:nth-child(3) {
+  transform: scale(1.1);
+  opacity: 0.25;
+  z-index: -1;
+  filter: blur(4px);
+}
+
+.img:hover img:nth-child(3) {
+  transform: scale(1.15) rotate(2deg);
+  filter: blur(6px);
 }
 </style>
