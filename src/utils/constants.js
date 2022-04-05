@@ -12,3 +12,18 @@ export const BGS = {
   light: 'jedi',
   dark: 'sith',
 }
+
+export const LINKS = [
+  {
+    link: 'https://vuetifyjs.com/en/',
+    text: 'Vuetify',
+  },
+  {
+    link: 'https://swapi.dev/api',
+    text: 'API',
+  },
+  {
+    link: 'https://starwars-visualguide.com',
+    text: 'Resources',
+  },
+]
