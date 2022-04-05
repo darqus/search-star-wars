@@ -8,4 +8,4 @@ export const findMatch = (string, search) => {
 }
 
 
-export const getIDfromAPI_URL = (url) => +url.split('/').reverse()[1]
+export const getIDfromApiUrl = (url) => +url.split('/').reverse()[1]

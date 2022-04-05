@@ -80,12 +80,28 @@ import {
   SEARCH_API_LIST,
   getDataFromApi,
 } from '@/utils/getDataFromApi'
-import { getIDfromAPI_URL } from '@/utils/transformData'
+import { getIDfromApiUrl } from '@/utils/transformData'
 import { createJSON } from '@/utils/createJSON'
 import DropList from '@/components/DropList.vue'
 import Link from '@/components/Link.vue'
 
 const INPUT_DELAY = 500
+
+const createInitialState = () => ({
+  items: [],
+  API_URL,
+  IMG_PLACEHOLDER,
+  SEARCH_API_LIST,
+  selectedApi: SEARCH_API_LIST[0].api,
+  selectedField: SEARCH_API_LIST[0].searchFields[0],
+  selectedFields: SEARCH_API_LIST[0].searchFields,
+  search: '',
+  timeout: null,
+  isLoading: false,
+  isShownDropDown: false,
+  defaultResult: '{}',
+  imgURL: null,
+})
 
 export default {
   name: 'Autocomplete',
@@ -99,32 +115,24 @@ export default {
       default: '',
     },
   },
-  data: () => ({
-    items: [],
-    API_URL,
-    IMG_PLACEHOLDER,
-    SEARCH_API_LIST,
-    selectedApi: SEARCH_API_LIST[0].api,
-    selectedField: SEARCH_API_LIST[0].searchFields[0],
-    selectedFields: SEARCH_API_LIST[0].searchFields,
-    search: '',
-    timeout: null,
-    isLoading: false,
-    isShownDropDown: false,
-    defaultResult: '{}',
-    imgURL: null,
-  }),
+  data: () => createInitialState(),
   computed: {
     result() {
       const { items, selectedField, search } = this
 
-      if (!items.length) return this.defaultResult
+      if (!items.length) {
+        this.clearResult()
+        return
+      }
 
       const result = items.find((item) => {
         return item[selectedField] === search
       })
 
-      if (!result) return
+      if (!result) {
+        this.clearIMGURL()
+        return
+      }
 
       this.setIMGURL(result.url)
 
@@ -145,7 +153,7 @@ export default {
       this.selectedField = searchField[0]
       this.selectedFields = searchField
 
-      this.clear()
+      this.clearSearch()
     },
     onSelect(select) {
       this.search = select
@@ -153,7 +161,7 @@ export default {
       this.timeout = null
     },
     onInput(event) {
-      if (!event) return this.clear()
+      if (!event) return this.clearSearch()
 
       this.isShownDropDown = true
 
@@ -172,7 +180,7 @@ export default {
       this.isLoading = false
     },
     setIMGURL(url) {
-      const id = getIDfromAPI_URL(url)
+      const id = getIDfromApiUrl(url)
 
       const imgApiPath = SEARCH_API_LIST.find(
         ({ api }) => api === this.selectedApi
@@ -182,11 +190,16 @@ export default {
 
       this.imgURL = imgURL
     },
-    clear() {
+    clearIMGURL() {
+      this.imgURL = null
+    },
+    clearResult() {
+      this.defaultResult = '{}'
+    },
+    clearSearch() {
       this.search = ''
       this.items = []
       this.timeout = null
-      this.imgURL = null
     },
   },
 }
