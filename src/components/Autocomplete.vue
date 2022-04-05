@@ -12,7 +12,7 @@
         >
           Search Star Wars
           <Link :link="`${API_URL}/${selectedApi}`" :text="selectedApi" />
-          with Vuetify
+          in Galaxy
         </h1>
       </v-col>
     </v-row>

@@ -26,7 +26,7 @@
               : 'text-right'
           "
         >
-          <small> {{ new Date().getFullYear() }} — Vuetify </small>
+          <small> 1977 — {{ new Date().getFullYear() }} 🙏 SkyNet inc. </small>
         </v-col>
       </v-row>
     </v-container>

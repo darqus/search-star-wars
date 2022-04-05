@@ -1,4 +1,4 @@
-# Star Wars autocomplete
+# Star Wars search in Galaxy
 
 ## Project setup
 ```
