@@ -8,15 +8,9 @@
 export default {
   name: 'ThemeSwitcher',
   props: {
-    side: {
+    label: {
       type: String,
       default: '',
-    },
-  },
-  computed: {
-    label() {
-      const label = `Your side: ${this.side}`
-      return label
     },
   },
 }

@@ -186,6 +186,7 @@ export default {
       this.search = ''
       this.items = []
       this.timeout = null
+      this.imgURL = null
     },
   },
 }

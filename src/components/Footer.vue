@@ -3,7 +3,7 @@
     <v-container>
       <v-row align="center">
         <v-col cols="12" xs="12" sm="4">
-          <ThemeSwitcher class="pa-3" :side="side" />
+          <ThemeSwitcher class="pa-3" :label="`Toggle side: ${this.side}`" />
         </v-col>
         <v-col cols="12" xs="12" sm="4">
           <small>

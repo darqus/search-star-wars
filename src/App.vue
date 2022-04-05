@@ -8,9 +8,12 @@
 </template>
 
 <script>
+import { getItem, setItem } from '@/utils/persistanceStorage'
 import Autocomplete from './components/Autocomplete'
 import Footer from '@/components/Footer.vue'
 import { SIDES, ROLES, BGS } from './utils/constants'
+
+const IS_THEME_DARK = 'isThemeDark'
 
 export default {
   name: 'App',
@@ -42,6 +45,17 @@ export default {
       background-size: cover;`
 
       return bg
+    },
+  },
+  created() {
+    const isLSDark = getItem(IS_THEME_DARK)
+    if (isLSDark !== null) {
+      this.$vuetify.theme.dark = isLSDark
+    }
+  },
+  watch: {
+    isDark(value) {
+      setItem(IS_THEME_DARK, value)
     },
   },
 }
