@@ -1,4 +1,4 @@
-# autocomplete
+# Star Wars autocomplete
 
 ## Project setup
 ```
