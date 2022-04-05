@@ -213,7 +213,6 @@ pre {
   position: relative;
   width: 360px;
   height: 360px;
-  background: rgba(0, 0, 0, 0);
   opacity: 0.6;
 }
 
@@ -224,18 +223,19 @@ pre {
   height: 100%;
   border-radius: 50%;
   transition: 0.5s ease-in-out;
-  box-shadow: 0 5px 8px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 5px 8px rgba(255, 255, 255, 0.05);
+  opacity: 0.5;
 }
 
 .img img:nth-child(2) {
   transform: scale(1.15);
-  opacity: 0.35;
+  opacity: 0.25;
   z-index: -1;
   filter: blur(6px);
 }
 
 .img:hover img:nth-child(2) {
-  transform: scale(1.1);
+  transform: scale(1.05);
   filter: blur(4px);
 }
 </style>
