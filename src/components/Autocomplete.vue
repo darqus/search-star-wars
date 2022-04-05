@@ -11,11 +11,7 @@
           "
         >
           Search Star Wars
-          <a
-            :href="`${API_URL}/${selectedApi}`"
-            target="_blank"
-            v-text="selectedApi"
-          />
+          <Link :link="`${API_URL}/${selectedApi}`" :text="selectedApi" />
           with Vuetify
         </h1>
       </v-col>
@@ -87,6 +83,7 @@ import {
 import { getIDfromAPI_URL } from '@/utils/transformData'
 import { createJSON } from '@/utils/createJSON'
 import DropList from '@/components/DropList.vue'
+import Link from '@/components/Link.vue'
 
 const INPUT_DELAY = 500
 
@@ -94,6 +91,7 @@ export default {
   name: 'Autocomplete',
   components: {
     DropList,
+    Link,
   },
   props: {
     role: {
