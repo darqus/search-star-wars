@@ -67,7 +67,7 @@
               :src="imgURL"
               :alt="selectedApi"
               :onerror="`this.onerror=null;this.src='${IMG_PLACEHOLDER}';`"
-            />
+            >
           </div>
         </div>
       </v-col>
@@ -107,7 +107,7 @@ const createInitialState = () => ({
 })
 
 export default {
-  name: 'Autocomplete',
+  name: 'Form',
   components: {
     DropList,
     Link,

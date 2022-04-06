@@ -1,7 +1,7 @@
 <template>
   <v-app :style="bg">
     <v-main>
-      <Autocomplete :role="role" />
+      <Form :role="role" />
     </v-main>
     <Footer :side="side" />
   </v-app>
@@ -9,7 +9,7 @@
 
 <script>
 import { getItem, setItem } from '@/utils/persistanceStorage'
-import Autocomplete from './components/Autocomplete'
+import Form from './components/Form'
 import Footer from '@/components/Footer.vue'
 import { SIDES, ROLES, BGS } from './utils/constants'
 
@@ -18,7 +18,7 @@ const IS_THEME_DARK = 'isThemeDark'
 export default {
   name: 'App',
   components: {
-    Autocomplete,
+    Form,
     Footer,
   },
   computed: {
