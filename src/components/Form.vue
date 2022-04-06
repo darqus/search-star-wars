@@ -67,9 +67,14 @@
               :src="imgURL"
               :alt="selectedApi"
               :onerror="`this.onerror=null;this.src='${IMG_PLACEHOLDER}';`"
-            >
+            />
           </div>
         </div>
+      </v-col>
+    </v-row>
+    <v-row v-else class="mt-5">
+      <v-col cols="12">
+        <SWCrawlText />
       </v-col>
     </v-row>
   </v-container>
@@ -87,6 +92,7 @@ import { getIDfromApiUrl } from '@/utils/transformData'
 import { createJSON } from '@/utils/createJSON'
 import DropList from '@/components/DropList.vue'
 import Link from '@/components/Link.vue'
+import SWCrawlText from '@/components/SWCrawlText.vue'
 
 const INPUT_DELAY = 500
 
@@ -111,6 +117,7 @@ export default {
   components: {
     DropList,
     Link,
+    SWCrawlText,
   },
   props: {
     role: {
