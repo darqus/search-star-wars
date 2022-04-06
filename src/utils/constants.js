@@ -26,4 +26,8 @@ export const LINKS = [
     link: 'https://starwars-visualguide.com',
     text: 'Resources',
   },
+  {
+    link: 'https://starwars.fandom.com/',
+    text: 'Wiki',
+  },
 ]
