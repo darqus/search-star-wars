@@ -26,7 +26,7 @@
               : 'text-right'
           "
         >
-          <small> 1977 — {{ new Date().getFullYear() }} 🙏 SkyNet inc. </small>
+          <small> 1977 — {{ new Date().getFullYear() }} 🪐 SkyNet inc. </small>
         </v-col>
       </v-row>
     </v-container>
