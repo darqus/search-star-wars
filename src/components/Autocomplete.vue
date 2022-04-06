@@ -24,6 +24,7 @@
           item-text="api"
           item-value="api"
           :label="`What you search, ${role}? May the Force be with you`"
+          dense
         />
       </v-col>
       <v-col cols="12" xs="12" sm="4">
@@ -31,6 +32,7 @@
           v-model="selectedField"
           :items="selectedFields"
           label="Selected Field"
+          dense
         />
       </v-col>
       <v-col cols="12" xs="12" sm="4">
@@ -39,6 +41,7 @@
           :label="`Search ${selectedApi}`"
           :loading="isLoading"
           clearable
+          dense
           @input="onInput"
         />
         <DropList
