@@ -430,9 +430,11 @@ export default {
       return this.$vuetify.theme.dark
     },
     color() {
-      const color = this.isDark ? 'yellow' : '#222'
+      const color = this.isDark
+        ? 'hsla(60, 100%, 50%, 0.308)'
+        : 'hsla(0, 0%, 0%, 0.308)'
 
-      return `color: ${color};`
+      return `color: ${color}`
     },
   },
 }
@@ -463,12 +465,19 @@ export default {
   right: 0;
   transform-origin: 50% 100%;
   transform: perspective(250px) rotateX(20deg);
-  color: yellow;
 }
 
 @keyframes autoscroll {
   to {
     margin-top: -50000px;
   }
+}
+
+.theme--dark ::selection {
+  color: hsla(60, 100%, 50%, 0.708);
+}
+
+.theme--light ::selection {
+  color: hsla(202, 90%, 45%, 0.708);
 }
 </style>
