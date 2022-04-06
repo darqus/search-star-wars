@@ -1,6 +1,6 @@
 <template>
   <div class="swct-wrapper" :style="color">
-    <div id="swct">
+    <div class="swct">
       <div>
         Publisher's summary There will soon come a day when the future of the
         galaxy hinges on the fate of one boy... though he does not yet know it.
@@ -441,22 +441,6 @@ export default {
 </script>
 
 <style>
-#swct {
-  position: absolute;
-  top: -3500px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-  font-size: 30px;
-  text-align: center;
-}
-
-#swct > div {
-  padding-top: 3500px;
-  animation: autoscroll 2000s linear;
-}
-
 .swct-wrapper {
   position: absolute;
   top: 0;
@@ -465,6 +449,23 @@ export default {
   right: 0;
   transform-origin: 50% 100%;
   transform: perspective(250px) rotateX(20deg);
+  font-smooth: grayscale;
+}
+
+.swct {
+  position: absolute;
+  top: 5vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  font-size: 4vh;
+  text-align: center;
+}
+
+.swct > div {
+  padding-top: 5vh;
+  animation: autoscroll 2000s linear;
 }
 
 @keyframes autoscroll {
@@ -478,6 +479,6 @@ export default {
 }
 
 .theme--light ::selection {
-  color: hsla(202, 90%, 45%, 0.708);
+  color: hsla(202, 87%, 34%, 0.708);
 }
 </style>
