@@ -1,90 +1,91 @@
 <template>
-  <v-container>
-    <v-row align="center">
-      <v-col cols="12" xs="12" sm="4">
-        <Logo />
-      </v-col>
-      <v-col cols="12" xs="12" sm="8">
-        <h1
-          class="header-text"
-          :style="
-            $vuetify.theme.dark
-              ? 'text-shadow: 3px -1px 14px rgba(255, 255, 255, 0.6); color: #fff;'
-              : 'text-shadow: 3px 1px 14px rgba(0, 0, 0, 0.6); color: #fff;'
-          "
-        >
-          Search Star Wars
-          <Link :link="`${API_URL}/${selectedApi}`" :text="selectedApi" />
-          in Galaxy
-        </h1>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="12" xs="12" sm="4">
-        <v-select
-          v-model="selectedApi"
-          :items="SEARCH_API_LIST"
-          item-text="api"
-          item-value="api"
-          :label="`What you search, ${role}? May the Force be with you`"
-          dense
-        />
-      </v-col>
-      <v-col cols="12" xs="12" sm="4">
-        <v-select
-          v-model="selectedField"
-          :items="selectedFields"
-          label="Selected Field"
-          dense
-        />
-      </v-col>
-      <v-col cols="12" xs="12" sm="4">
-        <v-text-field
-          v-model="search"
-          :label="`Search ${selectedApi}`"
-          :loading="isLoading"
-          clearable
-          dense
-          @input="onInput"
-        />
-        <DropList
-          v-if="items.length && isShownDropDown"
-          :items="items"
-          :search="search"
-          :selected-api="selectedApi"
-          :selected-field="selectedField"
-          @select="onSelect"
-        />
-      </v-col>
-    </v-row>
-    <v-row
-      align="center"
-      v-if="items.length && result !== defaultResult"
-      class="-mt-5"
-    >
-      <v-col cols="12" xs="12" sm="6">
-        <pre v-text="result" />
-      </v-col>
-      <v-col cols="12" xs="12" sm="6">
-        <div class="wrapper" v-if="imgURL">
-          <div class="img">
-            <img
-              v-for="item in 2"
-              :key="item"
-              :src="imgURL"
-              :alt="selectedApi"
-              :onerror="`this.onerror=null;this.src='${IMG_PLACEHOLDER}';`"
-            />
-          </div>
-        </div>
-      </v-col>
-    </v-row>
-    <v-row v-else align="center">
-      <v-col cols="12">
-        <SWCrawlText />
-      </v-col>
-    </v-row>
-  </v-container>
+  <div>
+    <v-container>
+      <v-row align="center">
+        <v-col cols="12" xs="12" sm="4">
+          <Logo />
+        </v-col>
+        <v-col cols="12" xs="12" sm="8">
+          <h1
+            class="header-text"
+            :style="
+              $vuetify.theme.dark
+                ? 'text-shadow: 3px -1px 14px rgba(255, 255, 255, 0.6); color: #fff;'
+                : 'text-shadow: 3px 1px 14px rgba(0, 0, 0, 0.6); color: #fff;'
+            "
+          >
+            Search Star Wars
+            <Link :link="`${API_URL}/${selectedApi}`" :text="selectedApi" />
+            in Galaxy
+          </h1>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12" xs="12" sm="4">
+          <v-select
+            v-model="selectedApi"
+            :items="SEARCH_API_LIST"
+            item-text="api"
+            item-value="api"
+            :label="`What you search, ${role}? May the Force be with you`"
+            dense
+          />
+        </v-col>
+        <v-col cols="12" xs="12" sm="4">
+          <v-select
+            v-model="selectedField"
+            :items="selectedFields"
+            label="Selected Field"
+            dense
+          />
+        </v-col>
+        <v-col cols="12" xs="12" sm="4">
+          <v-text-field
+            v-model="search"
+            :label="`Search ${selectedApi}`"
+            :loading="isLoading"
+            clearable
+            dense
+            @input="onInput"
+          />
+          <DropList
+            v-if="items.length && isShownDropDown"
+            :items="items"
+            :search="search"
+            :selected-api="selectedApi"
+            :selected-field="selectedField"
+            @select="onSelect"
+          />
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <v-container>
+      <v-row align="center" no-gutters>
+        <template v-if="items.length && result !== defaultResult">
+          <template v-if="imgURL">
+            <div class="wrapper">
+              <div class="img">
+                <img
+                  v-for="item in 2"
+                  :key="item"
+                  :src="imgURL"
+                  :alt="selectedApi"
+                  :onerror="`this.onerror=null;this.src='${IMG_PLACEHOLDER}';`"
+                />
+              </div>
+            </div>
+            <Dialog class="my-5" :search="search" :result="result" />
+          </template>
+        </template>
+        <template v-else>
+          <v-col>
+            <SWCrawlText />
+          </v-col>
+        </template>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>
@@ -101,6 +102,7 @@ import Logo from '@/components/Logo.vue'
 import DropList from '@/components/DropList.vue'
 import Link from '@/components/Link.vue'
 import SWCrawlText from '@/components/SWCrawlText.vue'
+import Dialog from '@/components/Dialog.vue'
 
 const INPUT_DELAY = 500
 
@@ -127,6 +129,7 @@ export default {
     DropList,
     Link,
     SWCrawlText,
+    Dialog,
   },
   props: {
     role: {
@@ -228,12 +231,6 @@ export default {
 .header-text {
   font-size: clamp(2vw, 2.5rem, 100%);
   font-weight: 700;
-}
-
-pre {
-  max-width: clamp(50vh, 60vh, 70vh);
-  max-height: clamp(50vh, 60vh, 70vh);
-  overflow: auto;
 }
 
 .wrapper {
