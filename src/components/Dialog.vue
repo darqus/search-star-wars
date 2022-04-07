@@ -4,17 +4,6 @@
       v-model="dialog"
       :max-width="$vuetify.breakpointsmAndDown ? 290 : 560"
     >
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          :color="
-            $vuetify.theme.dark ? 'secondary darken-1' : 'primary lighten-1'
-          "
-          :dark="$vuetify.theme.dark"
-          v-bind="attrs"
-          v-on="on"
-          v-text="search"
-        />
-      </template>
       <v-card>
         <v-card-title class="text-h5" v-text="search" />
         <v-card-text>
@@ -40,6 +29,18 @@ export default {
     result: {
       type: String,
       default: '',
+    },
+    isDialogShow: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  watch: {
+    dialog(value) {
+      this.$emit('dialog', value)
+    },
+    isDialogShow(value) {
+      this.dialog = value
     },
   },
   data: () => ({

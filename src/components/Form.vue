@@ -70,10 +70,17 @@
                   :src="imgURL"
                   :alt="selectedApi"
                   :onerror="`this.onerror=null;this.src='${IMG_PLACEHOLDER}';`"
+                  @click="isDialogShow = !isDialogShow"
                 />
               </div>
             </div>
-            <Dialog class="my-5" :search="search" :result="result" />
+            <Dialog
+              class="my-5"
+              :search="search"
+              :result="result"
+              :is-dialog-show="isDialogShow"
+              @dialog="onDialog"
+            />
           </template>
         </template>
         <template v-else>
@@ -116,6 +123,7 @@ const createInitialState = () => ({
   isShownDropDown: false,
   defaultResult: '{}',
   imgURL: null,
+  isDialogShow: false,
 })
 
 export default {
@@ -207,6 +215,9 @@ export default {
       const imgURL = `${RESOURCE_URL}/assets/img/${imgApiPath}/${id}.jpg`
 
       this.imgURL = imgURL
+    },
+    onDialog(value) {
+      this.isDialogShow = value
     },
     clearIMGURL() {
       this.imgURL = null
