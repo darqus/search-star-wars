@@ -57,7 +57,11 @@
         />
       </v-col>
     </v-row>
-    <v-row v-if="items.length && result !== defaultResult" class="mt-5">
+    <v-row
+      align="center"
+      v-if="items.length && result !== defaultResult"
+      class="-mt-5"
+    >
       <v-col cols="12" xs="12" sm="6">
         <pre v-text="result" />
       </v-col>
@@ -75,7 +79,7 @@
         </div>
       </v-col>
     </v-row>
-    <v-row v-else class="mt-5">
+    <v-row v-else align="center">
       <v-col cols="12">
         <SWCrawlText />
       </v-col>

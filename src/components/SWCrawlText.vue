@@ -442,25 +442,22 @@ export default {
 
 <style>
 .swct-mask {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: relative;
+  height: clamp(40vh, 50vh, 60vh);
   transform-origin: 50% 100%;
-  transform: perspective(250px) rotateX(20deg);
+  transform: perspective(150px) rotateX(20deg);
   font-smooth: grayscale;
 }
 
 .swct-container {
   position: absolute;
-  top: 5vh;
+  top: -90vh;
   bottom: 0;
   left: 0;
   right: 0;
   overflow: hidden;
   font-size: 4vh;
-  text-align: center;
+  text-align: justify;
 }
 
 .swct-text {
@@ -470,7 +467,7 @@ export default {
 
 @keyframes autoscroll {
   to {
-    margin-top: -50000px;
+    margin-top: -40000px;
   }
 }
 
