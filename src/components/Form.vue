@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row align="center" align-content="center">
+    <v-row align="center">
       <v-col cols="12" xs="12" sm="4">
         <Logo />
       </v-col>
@@ -19,6 +19,7 @@
         </h1>
       </v-col>
     </v-row>
+
     <v-row>
       <v-col cols="12" xs="12" sm="4">
         <v-select
@@ -58,7 +59,7 @@
       </v-col>
     </v-row>
 
-    <v-row align="center" align-content="center">
+    <v-row>
       <v-col>
         <template v-if="items.length && result !== defaultResult">
           <template v-if="imgURL">
