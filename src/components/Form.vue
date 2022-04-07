@@ -227,8 +227,8 @@ export default {
 }
 
 pre {
-  max-width: 550px;
-  max-height: 550px;
+  max-width: clamp(50vh, 60vh, 70vh);
+  max-height: clamp(50vh, 60vh, 70vh);
   overflow: auto;
 }
 
@@ -243,8 +243,8 @@ pre {
 .img {
   cursor: pointer;
   position: relative;
-  width: 360px;
-  height: 360px;
+  width: clamp(9vw, 300px, 90vw);
+  height: clamp(9vw, 300px, 90vw);
   opacity: 0.6;
 }
 
