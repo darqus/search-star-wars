@@ -467,7 +467,7 @@ export default {
 
 @keyframes autoscroll {
   to {
-    margin-top: -40000px;
+    margin-top: -3000vh;
   }
 }
 
