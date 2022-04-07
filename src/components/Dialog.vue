@@ -1,8 +1,7 @@
 <template>
-  <v-row justify="center">
+  <div class="d-flex justify-center">
     <v-dialog
       v-model="dialog"
-      persistent
       :max-width="$vuetify.breakpointsmAndDown ? 290 : 560"
     >
       <template v-slot:activator="{ on, attrs }">
@@ -27,7 +26,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </v-row>
+  </div>
 </template>
 
 <script>
