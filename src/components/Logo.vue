@@ -24,10 +24,10 @@ export default {
 <style>
 .logo {
   transform: scale(0.7);
-  filter: invert(0.22) sepia(0.6) drop-shadow(0 10px 6px hsla(0, 0%, 0%, 0.5));
+  filter: invert(0.22) sepia(0.7) drop-shadow(0 10px 6px hsla(0, 0%, 0%, 0.5));
 }
 
 .logo path {
-  fill: #000;
+  fill: #fff;
 }
 </style>
