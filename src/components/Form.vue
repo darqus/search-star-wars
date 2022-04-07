@@ -1,9 +1,12 @@
 <template>
   <v-container>
-    <v-row class="text-center mt-5">
-      <v-col>
+    <v-row align="center">
+      <v-col cols="12" xs="12" sm="4">
+        <Logo />
+      </v-col>
+      <v-col cols="12" xs="12" sm="8">
         <h1
-          class="display-1 font-weight-bold mb-3"
+          class="header-text"
           :style="
             $vuetify.theme.dark
               ? 'text-shadow: 3px -1px 14px rgba(255, 255, 255, 0.6); color: #fff;'
@@ -16,7 +19,7 @@
         </h1>
       </v-col>
     </v-row>
-    <v-row class="text-center">
+    <v-row>
       <v-col cols="12" xs="12" sm="4">
         <v-select
           v-model="selectedApi"
@@ -90,6 +93,7 @@ import {
 } from '@/utils/getDataFromApi'
 import { getIDfromApiUrl } from '@/utils/transformData'
 import { createJSON } from '@/utils/createJSON'
+import Logo from '@/components/Logo.vue'
 import DropList from '@/components/DropList.vue'
 import Link from '@/components/Link.vue'
 import SWCrawlText from '@/components/SWCrawlText.vue'
@@ -115,6 +119,7 @@ const createInitialState = () => ({
 export default {
   name: 'Form',
   components: {
+    Logo,
     DropList,
     Link,
     SWCrawlText,
@@ -216,6 +221,11 @@ export default {
 </script>
 
 <style>
+.header-text {
+  font-size: clamp(2vw, 2.5rem, 100%);
+  font-weight: 700;
+}
+
 pre {
   max-width: 550px;
   max-height: 550px;

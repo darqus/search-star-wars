@@ -479,6 +479,6 @@ export default {
 }
 
 .theme--light ::selection {
-  color: hsla(202, 87%, 34%, 0.708);
+  color: hsla(60, 100%, 30%, 0.708);
 }
 </style>
