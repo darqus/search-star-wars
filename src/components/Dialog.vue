@@ -2,7 +2,7 @@
   <div class="d-flex justify-center">
     <v-dialog
       v-model="dialog"
-      :max-width="$vuetify.breakpointsmAndDown ? 290 : 560"
+      :max-width="$vuetify.breakpoint.smAndDown ? 290 : 560"
     >
       <v-card>
         <v-card-title class="text-h5" v-text="search" />
