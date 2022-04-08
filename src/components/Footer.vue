@@ -22,7 +22,7 @@
           sm="4"
           :class="$vuetify.breakpoint.smAndDown ? 'text-center' : 'text-right'"
         >
-          <SoundButton @toggle-audio="onToggleAudio" />
+          <SoundButton />
           <small> 1977 — {{ new Date().getFullYear() }} 🪐 SkyNet inc. </small>
         </v-col>
       </v-row>
