@@ -1,24 +1,9 @@
 # Star Wars search in Galaxy
 
-## Project setup
-```
-yarn install
-```
+### Links
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[Vuetify](https://vuetifyjs.com/en/)
+[API](https://swapi.dev/api)
+[Resources](https://starwars-visualguide.com)
+[Wiki](https://starwars.fandom.com/)
+[Music](https://meloboom.com/en/tags/star%20wars)
