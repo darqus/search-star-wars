@@ -1,5 +1,5 @@
 <template>
-  <v-btn icon @click="toogle">
+  <v-btn icon @click="onToggle">
     <v-icon v-text="icon" />
   </v-btn>
 </template>
@@ -15,7 +15,7 @@ export default {
     isPlayed: true,
   }),
   created() {
-    this.soundPlay()
+    this.onPlaySound()
   },
   computed: {
     icon() {
@@ -23,19 +23,19 @@ export default {
     },
   },
   methods: {
-    soundPlay() {
+    onPlaySound() {
       sound.play()
     },
-    soundPause() {
+    onPauseSound() {
       sound.pause()
     },
-    toogle() {
+    onToggle() {
       const { isPlayed } = this
       this.isPlayed = !isPlayed
       if (!isPlayed) {
-        this.soundPlay()
+        this.onPlaySound()
       } else {
-        this.soundPause()
+        this.onPauseSound()
       }
     },
   },
