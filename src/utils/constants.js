@@ -35,3 +35,9 @@ export const LINKS = [
     text: 'Music',
   },
 ]
+
+
+export const AUDIO_ICONS = {
+  play: 'mdi-play',
+  stop: 'mdi-stop',
+}

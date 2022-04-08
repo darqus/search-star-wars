@@ -1,7 +1,7 @@
 <template>
   <div class="swct-mask" :style="color">
     <div class="swct-container">
-      <div class="swct-text">
+      <div class="swct-text -js-stop">
         Publisher's summary There will soon come a day when the future of the
         galaxy hinges on the fate of one boy... though he does not yet know it.
         Growing up on the desert world Tatooine, Anakin Skywalker never thought
@@ -463,6 +463,10 @@ export default {
 .swct-text {
   padding-top: 5vh;
   animation: autoscroll 2000s linear;
+}
+
+.swct-text.js-stop {
+  animation: initial;
 }
 
 @keyframes autoscroll {

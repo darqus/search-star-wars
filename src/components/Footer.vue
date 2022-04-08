@@ -20,12 +20,9 @@
           cols="12"
           xs="12"
           sm="4"
-          :class="
-            ['xs'].includes($vuetify.breakpoint.name)
-              ? 'text-center'
-              : 'text-right'
-          "
+          :class="$vuetify.breakpoint.smAndDown ? 'text-center' : 'text-right'"
         >
+          <SoundButton @toggle-audio="onToggleAudio" />
           <small> 1977 — {{ new Date().getFullYear() }} 🪐 SkyNet inc. </small>
         </v-col>
       </v-row>
@@ -37,12 +34,14 @@
 import { LINKS } from '@/utils/constants'
 import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
 import Link from '@/components/Link.vue'
+import SoundButton from '@/components/SoundButton.vue'
 
 export default {
   name: 'Footer',
   components: {
     ThemeSwitcher,
     Link,
+    SoundButton,
   },
   props: {
     side: {
