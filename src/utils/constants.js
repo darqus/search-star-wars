@@ -30,4 +30,8 @@ export const LINKS = [
     link: 'https://starwars.fandom.com/',
     text: 'Wiki',
   },
+  {
+    link: 'https://meloboom.com/en/tags/star%20wars',
+    text: 'Music',
+  },
 ]
