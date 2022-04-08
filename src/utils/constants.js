@@ -34,6 +34,10 @@ export const LINKS = [
     link: 'https://meloboom.com/en/tags/star%20wars',
     text: 'Music',
   },
+  {
+    link: 'https://www.softicons.com/search?search=star+wars&x=13&y=10',
+    text: 'Icons',
+  },
 ]
 
 
