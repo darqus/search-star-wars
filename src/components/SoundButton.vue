@@ -19,20 +19,12 @@ export default {
       return this.isPlayed ? AUDIO_ICONS.stop : AUDIO_ICONS.play
     },
   },
+  mounted() {
+    sound.addEventListener('ended', () => this.onToggle(), false)
+  },
   methods: {
-    onPlaySound() {
-      if (typeof sound.loop === 'boolean') {
-        sound.loop = true
-      } else {
-        sound.addEventListener(
-          'ended',
-          () => {
-            this.currentTime = 0
-            this.play()
-          },
-          false
-        )
-      }
+    onPlaySound(loop = false) {
+      sound.loop = loop
       sound.play()
     },
     onPauseSound() {
