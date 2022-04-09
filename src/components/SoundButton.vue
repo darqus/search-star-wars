@@ -26,9 +26,13 @@ export default {
   mounted() {
     sound.addEventListener('ended', () => this.onToggle(), false)
   },
+  watch: {
+    isLoop(value) {
+      sound.loop = value
+    },
+  },
   methods: {
     onPlaySound() {
-      sound.loop = this.isLoop
       sound.play()
     },
     onPauseSound() {
