@@ -61,7 +61,11 @@
 
     <v-row>
       <v-col
-        :style="!$vuetify.breakpoint.smAndDown ? 'position: relative;' : ''"
+        :style="
+          !$vuetify.breakpoint.smAndDown
+            ? 'position: relative; z-index: 0;'
+            : ''
+        "
       >
         <template v-if="!$vuetify.breakpoint.smAndDown">
           <Mandala />
@@ -260,8 +264,8 @@ export default {
 .img {
   cursor: pointer;
   position: relative;
-  width: clamp(9vw, 300px, 90vw);
-  height: clamp(9vw, 300px, 90vw);
+  width: clamp(9vw, 60vh, 90vw);
+  height: clamp(9vw, 60vh, 90vw);
   opacity: 0.6;
 }
 

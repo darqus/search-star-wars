@@ -96,23 +96,23 @@ export default {
   data: () => ({
     items: {
       s1: {
-        text: '&nbsp;&nbsp;&nbsp;/<tspan>/</tspan>/<tspan>/</tspan>/<tspan>/</tspan>/<tspan>/</tspan>/<tspan>/</tspan>/<tspan>/</tspan>',
+        text: '&nbsp;&nbsp;&nbsp;̧̝΅̮̼˘˼̐',
         len: 7,
       },
       s2: {
-        text: '&nbsp;&nbsp;+<tspan>+</tspan>+<tspan>+</tspan>+<tspan>+</tspan>',
+        text: '&nbsp;&nbsp;̧΅̮̼<tspan>̧΅</tspan>̃ˬ<tspan>̧</tspan>̧΅̮<tspan>͒̈́</tspan>',
         len: 7,
       },
       s3: {
-        text: '<tspan>{</tspan>{<tspan>{</tspan>{&nbsp;<tspan>}</tspan>}<tspan>}</tspan>}&nbsp;&nbsp;',
+        text: '˘˼̐˶̨̰̼̃͂̏̑̉̆&nbsp;&nbsp;',
         len: 6,
       },
       s4: {
-        text: '&nbsp;&nbsp;&nbsp;../../ ',
+        text: '&nbsp;&nbsp;&nbsp;͋ ͒̈́',
         len: 7,
       },
       s5: {
-        text: '<tspan>&lt;&gt;</tspan>&lt;/&gt;',
+        text: 'ˠ˞˟˷̐˽̘̖̫̫̭̮̔',
         len: 15,
       },
     },
@@ -122,18 +122,17 @@ export default {
 
 <style>
 .mandala-container {
-  display: flex;
-  justify-content: center;
   --mandala-primary: rgb(136, 136, 136);
   --mandala-accent-1: rgb(136, 136, 136);
   --mandala-accent-2: rgb(136, 136, 136);
   --mandala-accent-3: rgb(136, 136, 136);
   --mandala-accent-4: rgb(136, 136, 136);
 
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  opacity: 0.2;
+  position: fixed;
+  overflow: hidden;
+  z-index: -1;
+  bottom: -100px;
+  opacity: 0.4;
 }
 
 .mandala-container.left {
