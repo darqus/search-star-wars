@@ -2,7 +2,9 @@
   <v-footer padless>
     <v-container
       class="g-grid g-align-items-center"
-      :class="$vuetify.breakpoint.smAndDown ? 'g-col-initial g-gap' : 'g-col-4'"
+      :class="
+        $vuetify.breakpoint.smAndDown ? 'g-col-initial g-row-gap' : 'g-col-4'
+      "
     >
       <div
         :class="
@@ -46,7 +48,8 @@
         "
       >
         <small class="">
-          1977 — {{ new Date().getFullYear() }} 🪐 SkyNet inc.
+          1977 — {{ new Date().getFullYear() }}
+          <span class="ml-2">🪐 SkyNet inc.</span>
         </small>
       </div>
     </v-container>
@@ -111,8 +114,8 @@ export default {
   grid-template-columns: initial;
 }
 
-.g-gap {
-  gap: 0.7rem;
+.g-row-gap {
+  row-gap: 0.5rem;
 }
 
 .theme--dark.v-footer {
