@@ -1,7 +1,10 @@
 <template>
-  <v-btn icon @click="onToggle" x-large>
-    <v-icon v-text="icon" />
-  </v-btn>
+  <div class="g-grid g-col-2 g-align-items-center">
+    <v-btn icon @click="onToggle">
+      <v-icon v-text="icon" />
+    </v-btn>
+    <v-checkbox dense v-model="isLoop" label="loop" class="ma-0" />
+  </div>
 </template>
 
 <script>
@@ -13,6 +16,7 @@ export default {
   name: 'SoundButton',
   data: () => ({
     isPlayed: false,
+    isLoop: false,
   }),
   computed: {
     icon() {
@@ -23,8 +27,8 @@ export default {
     sound.addEventListener('ended', () => this.onToggle(), false)
   },
   methods: {
-    onPlaySound(loop = false) {
-      sound.loop = loop
+    onPlaySound() {
+      sound.loop = this.isLoop
       sound.play()
     },
     onPauseSound() {
