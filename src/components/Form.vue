@@ -60,7 +60,13 @@
     </v-row>
 
     <v-row>
-      <v-col>
+      <v-col
+        :style="!$vuetify.breakpoint.smAndDown ? 'position: relative;' : ''"
+      >
+        <template v-if="!$vuetify.breakpoint.smAndDown">
+          <Mandala />
+          <Mandala :class-name="'right'" />
+        </template>
         <template v-if="items.length && result !== defaultResult">
           <template v-if="imgURL">
             <div class="wrapper">
@@ -107,6 +113,7 @@ import DropList from '@/components/DropList.vue'
 import Link from '@/components/Link.vue'
 import SWCrawlText from '@/components/SWCrawlText.vue'
 import Dialog from '@/components/Dialog.vue'
+import Mandala from '@/components/Mandala.vue'
 
 const INPUT_DELAY = 500
 
@@ -135,6 +142,7 @@ export default {
     Link,
     SWCrawlText,
     Dialog,
+    Mandala,
   },
   props: {
     role: {

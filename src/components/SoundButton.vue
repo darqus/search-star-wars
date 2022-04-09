@@ -1,5 +1,5 @@
 <template>
-  <v-btn icon @click="onToggle">
+  <v-btn icon @click="onToggle" x-large>
     <v-icon v-text="icon" />
   </v-btn>
 </template>
@@ -12,11 +12,8 @@ const sound = new Audio('snd/star-wars-theme.m4a')
 export default {
   name: 'SoundButton',
   data: () => ({
-    isPlayed: true,
+    isPlayed: false,
   }),
-  created() {
-    this.onPlaySound()
-  },
   computed: {
     icon() {
       return this.isPlayed ? AUDIO_ICONS.stop : AUDIO_ICONS.play
@@ -41,6 +38,3 @@ export default {
   },
 }
 </script>
-
-<style>
-</style>
