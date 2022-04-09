@@ -21,6 +21,18 @@ export default {
   },
   methods: {
     onPlaySound() {
+      if (typeof sound.loop === 'boolean') {
+        sound.loop = true
+      } else {
+        sound.addEventListener(
+          'ended',
+          () => {
+            this.currentTime = 0
+            this.play()
+          },
+          false
+        )
+      }
       sound.play()
     },
     onPauseSound() {
