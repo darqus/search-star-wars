@@ -1,5 +1,5 @@
 <template>
-  <v-footer padless style="opacity: 0.4">
+  <v-footer padless>
     <v-container>
       <v-row align="center">
         <v-col cols="12" xs="12" sm="4">
@@ -54,3 +54,15 @@ export default {
   }),
 }
 </script>
+
+<style>
+.theme--dark.v-footer {
+  background-color: rgba(39, 39, 39, 0.4) !important;
+  color: rgba(255, 255, 255, 0.47) !important;
+}
+
+.theme--light.v-footer {
+  background-color: rgba(245, 245, 245, 0.4) !important;
+  color: rgba(0, 0, 0, 0.47) !important;
+}
+</style>

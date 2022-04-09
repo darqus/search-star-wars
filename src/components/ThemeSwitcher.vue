@@ -1,7 +1,5 @@
 <template>
-  <!-- <v-card elevation="0" class="text-center" :dark="$vuetify.theme.dark" flat> -->
-  <v-switch class="my-0" v-model="$vuetify.theme.dark" :label="label" />
-  <!-- </v-card> -->
+  <v-switch dense class="my-0" v-model="$vuetify.theme.dark" :label="label" />
 </template>
 
 <script>

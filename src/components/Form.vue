@@ -67,10 +67,6 @@
             : ''
         "
       >
-        <template v-if="!$vuetify.breakpoint.smAndDown">
-          <Mandala />
-          <Mandala :class-name="'right'" />
-        </template>
         <template v-if="items.length && result !== defaultResult">
           <template v-if="imgURL">
             <div class="wrapper">
@@ -96,6 +92,10 @@
         </template>
         <template v-else>
           <SWCrawlText />
+        </template>
+        <template v-if="!$vuetify.breakpoint.smAndDown">
+          <Mandala />
+          <Mandala :class-name="'right'" />
         </template>
       </v-col>
     </v-row>
