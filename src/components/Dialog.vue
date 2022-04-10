@@ -54,4 +54,14 @@ pre {
   max-height: clamp(30vh, 50vh, 70vh);
   overflow: auto;
 }
+
+.theme--dark.v-card {
+  background-color: rgba(30, 30, 30, 0.4) !important;
+  color: #fff;
+}
+
+.theme--light.v-card {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  color: rgba(0, 0, 0, 0.87);
+}
 </style>
