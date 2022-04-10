@@ -60,9 +60,6 @@
     </v-row>
 
     <v-row>
-      <!--       <v-col
-        :style="!$vuetify.breakpoint.smAndDown ? 'position: relative;' : ''"
-      > -->
       <v-col>
         <template v-if="items.length && result !== defaultResult">
           <template v-if="imgURL">
