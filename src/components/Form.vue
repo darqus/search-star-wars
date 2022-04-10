@@ -20,7 +20,7 @@
       </v-col>
     </v-row>
 
-    <v-row>
+    <v-row style="position: relative; z-index: 2">
       <v-col cols="12" xs="12" sm="4">
         <v-select
           v-model="selectedApi"
