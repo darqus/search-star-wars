@@ -7,10 +7,11 @@
       "
     >
       <div
+        class="g-grid"
         :class="
           $vuetify.breakpoint.smAndDown
-            ? 'g-jistify-self-center'
-            : 'g-jistify-self-start'
+            ? 'g-jistify-content-center'
+            : 'g-jistify-content-start'
         "
       >
         <ThemeSwitcher class="pa-3" :label="`Toggle side: ${this.side}`" />
@@ -18,8 +19,8 @@
       <div
         :class="
           $vuetify.breakpoint.smAndDown
-            ? 'g-jistify-self-center'
-            : 'g-jistify-self-start'
+            ? 'g-grid g-jistify-content-center'
+            : 'g-jistify-content-start'
         "
       >
         <Link
@@ -31,10 +32,11 @@
         />
       </div>
       <div
+        class="g-grid"
         :class="
           $vuetify.breakpoint.smAndDown
-            ? 'g-jistify-self-center'
-            : 'g-jistify-self-end'
+            ? 'g-jistify-content-center'
+            : 'g-jistify-content-end'
         "
       >
         <SoundButton />
@@ -43,8 +45,8 @@
         class="g-grid g-align-items-center"
         :class="
           $vuetify.breakpoint.smAndDown
-            ? 'g-jistify-self-center'
-            : 'g-jistify-self-end'
+            ? 'g-jistify-content-center'
+            : 'g-jistify-content-end'
         "
       >
         <small class="">
@@ -90,16 +92,12 @@ export default {
   align-items: center;
 }
 
-.g-jistify-self-center {
-  justify-self: center;
+.g-jistify-content-center {
+  justify-content: center;
 }
 
-.g-jistify-self-start {
-  justify-self: start;
-}
-
-.g-jistify-self-end {
-  justify-self: end;
+.g-jistify-content-end {
+  justify-content: end;
 }
 
 .g-col-2 {
