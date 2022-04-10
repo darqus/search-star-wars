@@ -60,13 +60,10 @@
     </v-row>
 
     <v-row>
-      <v-col
-        :style="
-          !$vuetify.breakpoint.smAndDown
-            ? 'position: relative; z-index: 0;'
-            : ''
-        "
-      >
+      <!--       <v-col
+        :style="!$vuetify.breakpoint.smAndDown ? 'position: relative;' : ''"
+      > -->
+      <v-col>
         <template v-if="items.length && result !== defaultResult">
           <template v-if="imgURL">
             <div class="wrapper">
@@ -90,9 +87,7 @@
             />
           </template>
         </template>
-        <template v-else>
-          <SWCrawlText />
-        </template>
+        <SWCrawlText class="sw-crawl-text" />
         <template v-if="!$vuetify.breakpoint.smAndDown">
           <Mandala />
           <Mandala :class-name="'right'" />
@@ -259,6 +254,12 @@ export default {
   place-content: center;
   height: 100%;
   width: 100%;
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
 }
 
 .img {
@@ -290,5 +291,14 @@ export default {
 .img:hover img:nth-child(2) {
   transform: scale(1.1);
   filter: blur(4px);
+}
+
+.sw-crawl-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 35vh;
+  bottom: 0;
+  z-index: 0;
 }
 </style>

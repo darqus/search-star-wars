@@ -128,9 +128,9 @@ export default {
   --mandala-accent-3: rgb(136, 136, 136);
   --mandala-accent-4: rgb(136, 136, 136);
 
-  position: fixed;
+  position: absolute;
   overflow: hidden;
-  z-index: -1;
+  /* z-index: -1; */
   bottom: -40px;
   opacity: 0.4;
 }
