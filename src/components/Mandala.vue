@@ -131,7 +131,7 @@ export default {
   position: fixed;
   overflow: hidden;
   z-index: -1;
-  bottom: -100px;
+  bottom: -40px;
   opacity: 0.4;
 }
 
