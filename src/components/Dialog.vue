@@ -51,8 +51,7 @@ export default {
 
 <style>
 pre {
-  max-width: clamp(50vh, 60vh, 70vh);
-  max-height: clamp(50vh, 60vh, 70vh);
+  max-height: clamp(30vh, 50vh, 70vh);
   overflow: auto;
 }
 </style>
