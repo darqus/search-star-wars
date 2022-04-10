@@ -8,10 +8,11 @@
 </template>
 
 <script>
+import { THEMES, SIDES, ROLES, BGS } from './utils/constants'
 import { getItem, setItem } from '@/utils/persistanceStorage'
+import { getBrowserTheme } from '@/utils/getBrowserTheme'
 import Form from './components/Form'
 import Footer from '@/components/Footer.vue'
-import { SIDES, ROLES, BGS } from './utils/constants'
 
 const IS_THEME_DARK = 'isThemeDark'
 
@@ -49,7 +50,12 @@ export default {
   },
   created() {
     const isLSDark = getItem(IS_THEME_DARK)
-    if (isLSDark !== null) {
+
+    if (isLSDark === null) {
+      const browserTheme = getBrowserTheme()
+      const isBrowserThemeDark = browserTheme === THEMES.dark
+      this.$vuetify.theme.dark = isBrowserThemeDark
+    } else {
       this.$vuetify.theme.dark = isLSDark
     }
   },
