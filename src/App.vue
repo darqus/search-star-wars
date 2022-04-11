@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { THEMES, SIDES, ROLES, BGS } from './utils/constants'
+import { THEMES, SIDES, ROLES, BGS } from './state/'
 import { getItem, setItem } from '@/utils/persistanceStorage'
 import { getBrowserTheme } from '@/utils/getBrowserTheme'
 import Form from './components/Form'

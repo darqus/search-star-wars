@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { AUDIO_ICONS } from '@/utils/constants'
+import { AUDIO_ICONS } from '@/state/'
 
 const sound = new Audio('snd/star-wars-theme.m4a')
 

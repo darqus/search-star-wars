@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import { LINKS } from '@/utils/constants'
+import { LINKS } from '@/state/'
 import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
 import Link from '@/components/Link.vue'
 import SoundButton from '@/components/SoundButton.vue'

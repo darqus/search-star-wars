@@ -50,3 +50,6 @@ export const AUDIO_ICONS = {
   play: 'mdi-play',
   stop: 'mdi-stop',
 }
+
+
+export const NON_BREAKING_SPACE = String.fromCharCode(160)
