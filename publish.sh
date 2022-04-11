@@ -1,7 +1,5 @@
 #!/bin/bash
 
-git checkout gh-pages
-
 vue-cli-service build
 
 git checkout gh-pages
