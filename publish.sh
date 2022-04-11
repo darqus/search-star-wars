@@ -1,9 +1,11 @@
 #!/bin/bash
 
-cdate=`date +"%Y-%m-%d %T"`
+VERSION=`grep -o '"version": "[^"]*' package.json | grep -o '[^"]*$'`
 
-coment='upload '$cdate
-echo $coment
+CDATE=`date +"%Y-%m-%d %T"`
+
+COMMENT='dateTime: '$CDATE', v: '$VERSION
+echo $COMMENT
 
 vue-cli-service build
 
@@ -15,7 +17,7 @@ cp -r ../ssw_dist ./dist
 
 git add .
 
-git commit -m "$coment"
+git commit -m "$COMMENT"
 
 git push
 
