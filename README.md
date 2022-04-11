@@ -2,6 +2,8 @@
 
 ### Links
 
+[Preview](https://darqus.github.io/Search-star-wars/dist/)
+
 [Vuetify](https://vuetifyjs.com/en/)
 [API](https://swapi.dev/api)
 [Resources](https://starwars-visualguide.com)
