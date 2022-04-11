@@ -14,8 +14,7 @@
           "
         >
           Search Star Wars
-          <Link :link="`${API_URL}/${selectedApi}`" :text="selectedApi" />
-          in Galaxy
+          <Link :link="`${API_URL}/${selectedApi}`" :text="selectedApi" />in Galaxy
         </h1>
       </v-col>
     </v-row>

@@ -23,6 +23,11 @@ module.exports = {
       },
       svg: 'always',
       math: 'always'
+    }],
+    'vue/singleline-html-element-content-newline': ['error', {
+      'ignoreWhenNoAttributes': true,
+      'ignoreWhenEmpty': true,
+      'ignores': ['pre', 'textarea', 'v-btn', 'span']
     }]
   }
 }

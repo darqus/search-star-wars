@@ -36,47 +36,27 @@
         </defs>
         <text class="mandala-accent-1" dy="70" textLength="2010">
           <textPath textLength="2010" href="#circle1">
-            <tspan
-              v-for="s1 in items.s1.len"
-              :key="s1"
-              v-html="items.s1.text"
-            />
+            <tspan v-for="s1 in items.s1.len" :key="s1" v-html="items.s1.text" />
           </textPath>
         </text>
         <text class="mandala-accent-2" dy="70" textLength="1760">
           <textPath textLength="1760" href="#circle2">
-            <tspan
-              v-for="s2 in items.s2.len"
-              :key="s2"
-              v-html="items.s2.text"
-            />
+            <tspan v-for="s2 in items.s2.len" :key="s2" v-html="items.s2.text" />
           </textPath>
         </text>
         <text class="mandala-accent-3" dy="70" textLength="1507">
           <textPath textLength="1507" href="#circle3">
-            <tspan
-              v-for="s3 in items.s3.len"
-              :key="s3"
-              v-html="items.s3.text"
-            />
+            <tspan v-for="s3 in items.s3.len" :key="s3" v-html="items.s3.text" />
           </textPath>
         </text>
         <text class="mandala-accent-4" dy="70" textLength="1257">
           <textPath textLength="1257" href="#circle4">
-            <tspan
-              v-for="s4 in items.s4.len"
-              :key="s4"
-              v-html="items.s4.text"
-            />
+            <tspan v-for="s4 in items.s4.len" :key="s4" v-html="items.s4.text" />
           </textPath>
         </text>
         <text class="mandala-accent-5" dy="70" textLength="1005">
           <textPath textLength="1005" href="#circle5">
-            <tspan
-              v-for="s5 in items.s5.len"
-              :key="s5"
-              v-html="items.s5.text"
-            />
+            <tspan v-for="s5 in items.s5.len" :key="s5" v-html="items.s5.text" />
           </textPath>
         </text>
       </svg>

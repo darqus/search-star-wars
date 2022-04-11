@@ -49,7 +49,7 @@
             : 'g-jistify-content-end'
         "
       >
-        <small class="">
+        <small class>
           1977 — {{ new Date().getFullYear() }}
           <span class="ml-2">🪐 SkyNet inc.</span>
         </small>

@@ -11,7 +11,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer />
-          <v-btn color="gray darken-1" text @click="dialog = false"> OK </v-btn>
+          <v-btn color="gray darken-1" text @click="dialog = false">OK</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
