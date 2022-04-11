@@ -17,19 +17,23 @@
         <ThemeSwitcher class="pa-3" :label="`Toggle side: ${this.side}`" />
       </div>
       <div
+        class="g-grid g-align-items-center"
         :class="
           $vuetify.breakpoint.smAndDown
-            ? 'g-grid g-jistify-content-center'
+            ? 'g-jistify-content-center'
             : 'g-jistify-content-start'
         "
       >
-        <Link
-          v-for="{ link, text } in links"
-          :key="text"
-          :link="link"
-          :text="text"
-          class="px-2"
-        />
+        <div>
+          <Link
+            v-for="{ link, text } in links"
+            :key="text"
+            :link="link"
+            :text="text"
+            class="px-1"
+            :font-size-rem="0.8"
+          />
+        </div>
       </div>
       <div
         class="g-grid"

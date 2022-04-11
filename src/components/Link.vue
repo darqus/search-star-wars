@@ -1,5 +1,10 @@
 <template>
-  <a :href="link" target="_blank" v-text="text" />
+  <a
+    :href="link"
+    target="_blank"
+    v-text="text"
+    :style="`font-size: ${fontSizeRem}rem;`"
+  />
 </template>
 
 <script>
@@ -13,6 +18,10 @@ export default {
     text: {
       type: String,
       default: '',
+    },
+    fontSizeRem: {
+      type: Number,
+      default: 1,
     },
   },
 }
