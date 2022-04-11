@@ -3,7 +3,7 @@
     :href="link"
     target="_blank"
     v-text="text"
-    :style="`font-size: ${fontSizeRem}rem;`"
+    :style="fontSizeRem > 0 ? `font-size: ${fontSizeRem}rem;` : ''"
   />
 </template>
 
@@ -21,7 +21,7 @@ export default {
     },
     fontSizeRem: {
       type: Number,
-      default: 1,
+      default: -1,
     },
   },
 }
