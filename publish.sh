@@ -9,6 +9,8 @@ vue-cli-service build
 
 git checkout gh-pages
 
+cp -r ../ssw_dist /dist
+
 git add /dist
 
 git commit -m "$coment"
