@@ -85,6 +85,8 @@
 </template>
 
 <script>
+import { NON_BREAKING_SPACE } from '@/state/'
+
 export default {
   name: 'Mandala',
   props: {
@@ -96,19 +98,21 @@ export default {
   data: () => ({
     items: {
       s1: {
-        text: '&nbsp;&nbsp;&nbsp;̧̝΅̮̼˘˼̐',
+        text: `${NON_BREAKING_SPACE.repeat(3)}΅̮̼˘˼̐`,
         len: 7,
       },
       s2: {
-        text: '&nbsp;&nbsp;̧΅̮̼<tspan>̧΅</tspan>̃ˬ<tspan>̧</tspan>̧΅̮<tspan>͒̈́</tspan>',
+        text: `${NON_BREAKING_SPACE.repeat(
+          2
+        )};̧΅̮̼<tspan>̧΅</tspan>̃ˬ<tspan>̧</tspan>̧΅̮<tspan>͒̈́</tspan>`,
         len: 7,
       },
       s3: {
-        text: '˘˼̐˶̨̰̼̃͂̏̑̉̆&nbsp;&nbsp;',
+        text: `˘˼̐˶̨̰̼̃͂̏̑̉̆${NON_BREAKING_SPACE.repeat(2)}`,
         len: 6,
       },
       s4: {
-        text: '&nbsp;&nbsp;&nbsp;͋ ͒̈́',
+        text: `${NON_BREAKING_SPACE.repeat(3)} ͒̈́'`,
         len: 7,
       },
       s5: {
@@ -130,7 +134,6 @@ export default {
 
   position: absolute;
   overflow: hidden;
-  /* z-index: -1; */
   bottom: -40px;
   opacity: 0.4;
 }
