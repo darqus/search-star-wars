@@ -4,8 +4,8 @@ VERSION=`grep -o '"version": "[^"]*' package.json | grep -o '[^"]*$'`
 
 CDATE=`date +"%Y-%m-%d %T"`
 
-COMMENT='dateTime: '$CDATE', v: '$VERSION
-echo $COMMENT
+COMMENT='dateTime: ' $CDATE ', v: ' $VERSION
+echo 'commit name: ' $COMMENT
 
 vue-cli-service build
 
