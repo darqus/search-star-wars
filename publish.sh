@@ -9,7 +9,7 @@ vue-cli-service build
 
 git checkout gh-pages
 
-rm -r /dist
+rm -r dist/
 
 cp -r ../ssw_dist ./dist
 
