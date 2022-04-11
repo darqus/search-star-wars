@@ -1,16 +1,17 @@
 #!/bin/bash
 
+cdate=`date +"%Y-%m-%d %T"`
+
+coment='upload '$cdate
+echo $coment
+
 vue-cli-service build
 
 git checkout gh-pages
 
-git add .
+git add /dist
 
-data=$Y$M$D$H$M$S
-echo $data
-echo 'upload'
-
-git commit -m "upload $data"
+git commit -m "$coment"
 
 git push
 
