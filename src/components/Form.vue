@@ -246,11 +246,11 @@ export default {
 }
 
 .wrapper {
+  width: 100%;
+  height: 100%;
   display: grid;
   place-items: center;
   place-content: center;
-  height: 100%;
-  width: 100%;
   position: relative;
   left: 0;
   right: 0;
@@ -268,13 +268,13 @@ export default {
 }
 
 .img img {
-  position: absolute;
-  object-fit: cover;
   width: 100%;
   height: 100%;
+  position: absolute;
+  object-fit: cover;
   border-radius: 50%;
   transition: 0.5s ease-in-out;
-  box-shadow: 0 5px 8px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 5px 8px rgb(255 255 255 / 5%);
   opacity: 0.5;
 }
 
