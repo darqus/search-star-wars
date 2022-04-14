@@ -7,7 +7,7 @@
       <v-card>
         <v-card-title class="text-h5" v-text="search" />
         <v-card-text>
-          <pre v-text="result" />
+          <pre class="result" v-text="result" />
         </v-card-text>
         <v-card-actions>
           <v-spacer />
@@ -50,18 +50,18 @@ export default {
 </script>
 
 <style>
-pre {
+.result {
   max-height: clamp(30vh, 50vh, 70vh);
   overflow: auto;
 }
 
 .theme--dark.v-card {
-  background-color: rgba(30, 30, 30, 0.4) !important;
   color: #fff;
+  background-color: rgb(30 30 30 / 40%) !important;
 }
 
 .theme--light.v-card {
-  background-color: rgba(255, 255, 255, 0.4) !important;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgb(0 0 0 / 87%);
+  background-color: rgb(255 255 255 / 40%) !important;
 }
 </style>

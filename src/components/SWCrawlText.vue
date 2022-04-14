@@ -476,10 +476,10 @@ export default {
 }
 
 .theme--dark ::selection {
-  color: hsla(60, 100%, 50%, 0.708);
+  color: hsl(60deg 100% 50% / 70.8%);
 }
 
 .theme--light ::selection {
-  color: hsla(60, 100%, 30%, 0.708);
+  color: hsl(60deg 100% 30% / 70.8%);
 }
 </style>

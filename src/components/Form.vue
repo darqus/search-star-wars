@@ -246,56 +246,56 @@ export default {
 }
 
 .wrapper {
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  display: grid;
+  place-content: center;
+  place-items: center;
   width: 100%;
   height: 100%;
-  display: grid;
-  place-items: center;
-  place-content: center;
-  position: relative;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 1;
 }
 
 .img {
-  cursor: pointer;
   position: relative;
   width: clamp(9vw, 60vh, 90vw);
   height: clamp(9vw, 60vh, 90vw);
+  cursor: pointer;
   opacity: 0.6;
 }
 
 .img img {
+  position: absolute;
   width: 100%;
   height: 100%;
-  position: absolute;
-  object-fit: cover;
   border-radius: 50%;
-  transition: 0.5s ease-in-out;
   box-shadow: 0 5px 8px rgb(255 255 255 / 5%);
   opacity: 0.5;
+  transition: 0.5s ease-in-out;
+  object-fit: cover;
 }
 
 .img img:nth-child(2) {
-  transform: scale(1.15);
-  opacity: 0.25;
   z-index: -1;
   filter: blur(6px);
+  opacity: 0.25;
+  transform: scale(1.15);
 }
 
 .img:hover img:nth-child(2) {
-  transform: scale(1.1);
   filter: blur(4px);
+  transform: scale(1.1);
 }
 
 .sw-crawl-text {
   position: absolute;
-  left: 0;
-  right: 0;
   top: 35vh;
+  right: 0;
   bottom: 0;
+  left: 0;
   z-index: 0;
 }
 </style>

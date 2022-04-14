@@ -23,8 +23,8 @@ export default {
 
 <style>
 .logo {
+  filter: invert(0.22) sepia(0.7) drop-shadow(0 10px 6px hsl(0deg 0% 0% / 50%));
   transform: scale(0.7);
-  filter: invert(0.22) sepia(0.7) drop-shadow(0 10px 6px hsla(0, 0%, 0%, 0.5));
 }
 
 .logo path {
