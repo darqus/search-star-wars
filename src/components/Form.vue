@@ -95,6 +95,8 @@
 </template>
 
 <script>
+import { IS_DEV } from '@/state'
+import { RESULTS } from '@/state/fixtures'
 import {
   API_URL,
   RESOURCE_URL,
@@ -204,7 +206,9 @@ export default {
     async getData() {
       this.isLoading = true
       const response = await getDataFromApi(this.selectedApi)
-      const items = response?.results
+      const items = IS_DEV
+        ? RESULTS
+        : response?.results
       if (items.length) {
         this.items = items
       }

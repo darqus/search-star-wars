@@ -17,10 +17,8 @@
 </template>
 
 <script>
-import { findMatch } from '@/utils/transformData'
+import { getHighlightedStringFromPhrase, isMatchesStringFromPhrase } from '@/utils/transformData'
 import HighlightSearch from './HighlightSearch.vue'
-
-const LIMIT = 5
 
 export default {
   name: 'DropList',
@@ -48,18 +46,13 @@ export default {
   computed: {
     filteredItems() {
       const { items, selectedField, search } = this
-      return items.filter((item, idx) => {
-        const result =
-          item[selectedField].toLowerCase().startsWith(search.toLowerCase()) &&
-          idx < LIMIT
 
-        return result
-      })
+      return items.filter((item) => isMatchesStringFromPhrase(item[selectedField], search))
     },
   },
   methods: {
     getSearch(string) {
-      return findMatch(string, this.search)
+      return getHighlightedStringFromPhrase(string, this.search)
     },
   },
 }
