@@ -5,7 +5,7 @@ CDATE=`date +"%Y-%m-%d %T"`
 COMMENT='v: '$VERSION' from '$CDATE
 
 echo
-echo 'git commit name:'
+echo 'git commit message:'
 echo '"'$COMMENT'"'
 echo
 
