@@ -2,7 +2,7 @@
   <div class="d-flex justify-center">
     <v-dialog
       v-model="dialog"
-      :max-width="$vuetify.breakpoint.smAndDown ? 290 : 560"
+      :max-width="$vuetify.breakpoint.smAndDown ? '100%' : 560"
     >
       <v-card>
         <v-card-title class="text-h5" v-text="search" />
@@ -50,6 +50,10 @@ export default {
 </script>
 
 <style>
+.v-dialog {
+  margin: 0 !important;
+}
+
 .result {
   max-height: clamp(30vh, 50vh, 70vh);
   overflow: auto;
