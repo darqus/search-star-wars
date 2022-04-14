@@ -2,7 +2,9 @@
   <v-list-item-title>
     <span
       :class="
-        $vuetify.theme.dark ? 'light-blue darken-1' : 'light-blue lighten-3'
+        $vuetify.theme.dark
+          ? 'light-blue darken-1'
+          : 'light-blue lighten-3'
       "
       v-text="search[0]"
     />
