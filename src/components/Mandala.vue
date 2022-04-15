@@ -133,8 +133,8 @@ export default {
   --mandala-accent-4: rgb(136 136 136);
 
   position: absolute;
-  overflow: hidden;
   bottom: -40px;
+  overflow: hidden;
   opacity: 0.4;
 }
 
@@ -166,18 +166,18 @@ export default {
   }
 }
 
+.mandala-container svg {
+  font-size: 1.5rem;
+  font-weight: 300;
+  user-select: none;
+}
+
 .mandala-container .rotate-left > svg {
   animation: rotation-left 500s linear infinite;
 }
 
 .mandala-container .rotate-right > svg {
   animation: rotation-right 500s linear infinite;
-}
-
-.mandala-container svg {
-  font-size: 1.5rem;
-  font-weight: 300;
-  user-select: none;
 }
 
 .mandala-container svg > text {

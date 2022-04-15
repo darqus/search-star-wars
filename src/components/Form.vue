@@ -7,10 +7,10 @@
       <v-col cols="12" xs="12" sm="8">
         <h1
           class="header-text"
-          :style="
+          :slass="
             $vuetify.theme.dark
-              ? 'text-shadow: 3px -1px 14px rgba(255, 255, 255, 0.6); color: #fff;'
-              : 'text-shadow: 3px 1px 14px rgba(0, 0, 0, 0.6); color: #fff;'
+              ? 'dark'
+              : 'light'
           "
         >
           Search Star Wars
@@ -247,6 +247,16 @@ export default {
 .header-text {
   font-size: clamp(2vw, 2.5rem, 100%);
   font-weight: 700;
+}
+
+.header-text.dark {
+  color: #fff;
+  text-shadow: 3px -1px 14px rgb(255 255 255 / 60%);
+}
+
+.header-text.light {
+  color: #fff;
+  text-shadow: 3px 1px 14px rgb(0 0 0 / 60%);
 }
 
 .wrapper {

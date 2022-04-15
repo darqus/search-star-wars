@@ -444,17 +444,16 @@ export default {
 .swct-mask {
   position: relative;
   height: clamp(40vh, 50vh, 60vh);
-  transform-origin: 50% 100%;
   transform: perspective(150px) rotateX(20deg);
-  font-smooth: grayscale;
+  transform-origin: 50% 100%;
 }
 
 .swct-container {
   position: absolute;
   top: -90vh;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
   overflow: hidden;
   font-size: 4vh;
   text-align: justify;

@@ -121,12 +121,12 @@ export default {
 }
 
 .theme--dark.v-footer {
-  color: rgb(255 255 255 / 47%) !important;
-  background-color: rgb(39 39 39 / 40%) !important;
+  color: rgba(255, 255, 255, 0.47) !important;
+  background-color: rgba(39, 39, 39, 0.4) !important;
 }
 
 .theme--light.v-footer {
-  color: rgb(0 0 0 / 47%) !important;
-  background-color: rgb(245 245 245 / 40%) !important;
+  color: rgba(0, 0, 0, 0.47) !important;
+  background-color: rgba(245, 245, 245, 0.4) !important;
 }
 </style>
