@@ -2,7 +2,6 @@
   <v-menu
     top
     offset-y
-    :close-on-click="closeOnClick"
   >
     <template v-slot:activator="{ on, attrs }">
       <a
