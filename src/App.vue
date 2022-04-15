@@ -11,6 +11,7 @@
 import { THEMES, SIDES, ROLES, BGS } from './state/'
 import { getItem, setItem } from '@/utils/persistanceStorage'
 import { getBrowserTheme } from '@/utils/getBrowserTheme'
+import { setFavicon } from '@/utils/setFavicon'
 import Form from './components/Form'
 import Footer from '@/components/Footer.vue'
 
@@ -55,13 +56,16 @@ export default {
       const browserTheme = getBrowserTheme()
       const isBrowserThemeDark = browserTheme === THEMES.dark
       this.$vuetify.theme.dark = isBrowserThemeDark
+      setFavicon(isBrowserThemeDark)
     } else {
       this.$vuetify.theme.dark = isLSDark
+      setFavicon(isLSDark)
     }
   },
   watch: {
     isDark(value) {
       setItem(IS_THEME_DARK, value)
+      setFavicon(value)
     },
   },
 }

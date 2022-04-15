@@ -5,6 +5,11 @@ export const THEMES = {
   dark: 'dark',
 }
 
+export const FAVICONS = {
+  light: 'storm_trooper',
+  dark: 'darth_vader',
+}
+
 export const SIDES = {
   light: 'Light',
   dark: 'Dark',
