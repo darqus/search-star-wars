@@ -39,7 +39,7 @@
           dense
         />
       </v-col>
-      <v-col cols="12" xs="12" sm="4">
+      <v-col cols="12" xs="12" sm="4" style="position: relative;">
         <v-text-field
           v-model="search"
           :label="`Search ${selectedApi}`"
@@ -49,6 +49,7 @@
           @input="onInput"
         />
         <DropList
+          class="drop-list"
           v-if="items.length && isShownDropDown"
           :items="items"
           :search="search"
@@ -260,6 +261,22 @@ export default {
 .header-text.light {
   color: #fff;
   text-shadow: 3px 1px 14px rgb(0 0 0 / 60%);
+}
+
+.drop-list {
+  position: absolute !important;
+  right: 0.8rem;
+  left: 0.8rem;
+}
+
+.drop-list .theme--dark.v-list {
+  color: #fff;
+  background-color: rgb(30 30 30 / 40%) !important;
+}
+
+.drop-list .theme--light.v-list {
+  color: rgb(0 0 0 / 87%);
+  background-color: rgb(255 255 255 / 5%) !important;
 }
 
 .wrapper {
