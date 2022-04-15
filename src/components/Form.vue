@@ -59,7 +59,7 @@
       </v-col>
     </v-row>
 
-    <v-row>
+    <v-row style="position: relative;">
       <v-col>
         <template v-if="items.length && result !== defaultResult">
           <template v-if="imgURL">
@@ -84,7 +84,10 @@
             />
           </template>
         </template>
-        <SWCrawlText class="sw-crawl-text" />
+        <SWCrawlText
+          class="sw-crawl-text"
+          :class="{ mobile: $vuetify.breakpoint.smAndDown }"
+        />
         <template v-if="!$vuetify.breakpoint.smAndDown">
           <Mandala />
           <Mandala :class-name="'right'" />
@@ -306,10 +309,15 @@ export default {
 
 .sw-crawl-text {
   position: absolute;
-  top: 35vh;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  top: 10vh;
+  right: 2vh;
+  bottom: 2vh;
+  left: 2vh;
   z-index: 0;
+}
+
+.sw-crawl-text.mobile {
+  top: -10vh;
+  bottom: -5vh;
 }
 </style>
