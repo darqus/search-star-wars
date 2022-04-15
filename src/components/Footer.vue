@@ -55,7 +55,7 @@
       >
         <small class>
           1977 — {{ new Date().getFullYear() }}
-          <span class="ml-2">🪐 SkyNet inc.</span>
+          <span class="ml-2">🪐 <FooterDropDownInfo /> inc.</span>
         </small>
       </div>
     </v-container>
@@ -67,6 +67,7 @@ import { LINKS } from '@/state/'
 import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
 import Link from '@/components/Link.vue'
 import SoundButton from '@/components/SoundButton.vue'
+import FooterDropDownInfo from '@/components/FooterDropDownInfo.vue'
 
 export default {
   name: 'Footer',
@@ -74,6 +75,7 @@ export default {
     ThemeSwitcher,
     Link,
     SoundButton,
+    FooterDropDownInfo
   },
   props: {
     side: {
