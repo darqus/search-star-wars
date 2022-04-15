@@ -2,7 +2,7 @@
 
 VERSION=`grep -o '"version": "[^"]*' package.json | grep -o '[^"]*$'`
 CDATE=`date +"%Y-%m-%d %T"`
-sed -i "s/^VUE_APP_BUILD_DATA.*/VUE_APP_BUILD_DATA=$CDATE/g" .env
+sed -i "s/^VUE_APP_BUILD_DATA.*/VUE_APP_BUILD_DATA=$CDATE/g" .env.local
 COMMENT='v: '$VERSION' from '$CDATE
 
 echo
