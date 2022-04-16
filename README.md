@@ -1,4 +1,4 @@
-# Star Wars search in Galaxy pwa
+# Star Wars search in Galaxy
 
 ### Links
 
