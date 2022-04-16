@@ -54,8 +54,12 @@
         "
       >
         <small class>
-          1977 — {{ new Date().getFullYear() }}
-          <span class="ml-2">🪐 <FooterDropDownInfo /> inc.</span>
+          <span v-text="`1977 — ${new Date().getFullYear()}`"></span>
+          <span class="ml-2">
+            🌌
+            <FooterDropDownInfo />
+            <span class="ml-1">inc.</span>
+          </span>
         </small>
       </div>
     </v-container>
@@ -123,12 +127,12 @@ export default {
 }
 
 .theme--dark.v-footer {
-  color: rgb(255 255 255 / 47%) !important;
-  background-color: rgb(39 39 39 / 40%) !important;
+  color: rgb(255 255 255 / 0.47) !important;
+  background-color: rgb(39 39 39 / 0.4) !important;
 }
 
 .theme--light.v-footer {
-  color: rgb(0 0 0 / 47%) !important;
-  background-color: rgb(245 245 245 / 40%) !important;
+  color: rgb(0 0 0 / 0.47) !important;
+  background-color: rgb(245 245 245 / 0.4) !important;
 }
 </style>

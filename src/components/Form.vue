@@ -14,8 +14,7 @@
           "
         >
           Search Star Wars
-          <Link :link="`${API_URL}/${selectedApi}`" :text="selectedApi" />
-          in Galaxy
+          <Link :link="`${API_URL}/${selectedApi}`" :text="selectedApi" />in Galaxy
         </h1>
       </v-col>
     </v-row>
@@ -162,9 +161,7 @@ export default {
         return
       }
 
-      const result = items.find((item) => {
-        return item[selectedField] === search
-      })
+      const result = items.find((item) => item[selectedField] === search)
 
       if (!result) {
         this.clearIMGURL()
@@ -184,7 +181,7 @@ export default {
   methods: {
     setSearchField() {
       const searchField = SEARCH_API_LIST.find(
-        ({ api }) => api === this.selectedApi
+        ({ api }) => api === this.selectedApi,
       ).searchFields
 
       this.selectedField = searchField[0]
@@ -221,9 +218,9 @@ export default {
     setIMGURL(url) {
       const id = getIDfromApiUrl(url)
 
-      const imgApiPath = SEARCH_API_LIST.find(
-        ({ api }) => api === this.selectedApi
-      ).imgApiPath
+      const { imgApiPath } = SEARCH_API_LIST.find(
+        ({ api }) => api === this.selectedApi,
+      )
 
       const imgURL = `${RESOURCE_URL}/assets/img/${imgApiPath}/${id}.jpg`
 
@@ -255,12 +252,12 @@ export default {
 
 .header-text.dark {
   color: #fff;
-  text-shadow: 3px -1px 14px rgb(255 255 255 / 60%);
+  text-shadow: 3px -1px 14px rgb(255 255 255 / 0.6);
 }
 
 .header-text.light {
   color: #fff;
-  text-shadow: 3px 1px 14px rgb(0 0 0 / 60%);
+  text-shadow: 3px 1px 14px rgb(0 0 0 / 0.6);
 }
 
 .drop-list {
@@ -271,12 +268,12 @@ export default {
 
 .drop-list .theme--dark.v-list {
   color: #fff;
-  background-color: rgb(30 30 30 / 40%) !important;
+  background-color: rgb(30 30 30 / 0.4) !important;
 }
 
 .drop-list .theme--light.v-list {
-  color: rgb(0 0 0 / 87%);
-  background-color: rgb(255 255 255 / 5%) !important;
+  color: rgb(0 0 0 / 0.87);
+  background-color: rgb(255 255 255 / 0.05) !important;
 }
 
 .wrapper {
@@ -306,7 +303,7 @@ export default {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  box-shadow: 0 5px 8px rgb(255 255 255 / 5%);
+  box-shadow: 0 5px 8px rgb(255 255 255 / 0.05);
   opacity: 0.5;
   transition: 0.5s ease-in-out;
   object-fit: cover;

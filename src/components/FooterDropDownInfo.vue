@@ -1,19 +1,14 @@
 <template>
-  <v-menu
-    top
-    offset-y
-  >
+  <v-menu top offset-y>
     <template v-slot:activator="{ on, attrs }">
-      <a
-        v-bind="attrs"
-        v-on="on"
-        v-text="'SkyNet'"
-      />
+      <a v-bind="attrs" v-on="on" v-text="'SkyNet'" />
     </template>
 
     <v-list style="opacity: 0.5;">
       <v-list-item>
-        <v-list-item-title><small v-html="info" /></v-list-item-title>
+        <v-list-item-title>
+          <small v-html="info" />
+        </v-list-item-title>
       </v-list-item>
     </v-list>
   </v-menu>

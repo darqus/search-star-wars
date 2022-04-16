@@ -60,12 +60,12 @@ export default {
 }
 
 .theme--dark.v-card {
-  color: #fff;
-  background-color: rgb(30 30 30 / 40%) !important;
+  color: rgb(255 255 255);
+  background-color: rgb(30 30 30 / 0.4) !important;
 }
 
 .theme--light.v-card {
-  color: rgb(0 0 0 / 87%);
-  background-color: rgb(255 255 255 / 40%) !important;
+  color: rgb(0 0 0 / 0.87);
+  background-color: rgb(255 255 255 / 0.4) !important;
 }
 </style>
