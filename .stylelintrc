@@ -5,6 +5,7 @@
     "stylelint-config-recess-order"
   ],
   "rules": {
+    "alpha-value-notation": "number",
     "string-quotes": "double",
     "string-no-newline": null,
     "selector-max-universal": 1,
