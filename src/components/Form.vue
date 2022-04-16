@@ -346,7 +346,7 @@ export default {
 }
 
 .sw-crawl-text.mobile {
-  top: -10vh;
+  top: -30vh;
   bottom: -5vh;
 }
 </style>
