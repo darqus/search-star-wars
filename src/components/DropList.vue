@@ -20,6 +20,8 @@
 import { getHighlightedStringFromPhrase, isMatchesStringFromPhrase } from '@/utils/transformData'
 import HighlightSearch from './HighlightSearch.vue'
 
+const LIMIT_AUTOCOMPLETE_ITEMS = 5
+
 export default {
   name: 'DropList',
   components: {
@@ -47,7 +49,9 @@ export default {
     filteredItems() {
       const { items, selectedField, search } = this
 
-      return items.filter((item) => isMatchesStringFromPhrase(item[selectedField], search))
+      return items
+        .filter((item) => isMatchesStringFromPhrase(item[selectedField], search))
+        .filter((it, idx) => idx < LIMIT_AUTOCOMPLETE_ITEMS)
     },
   },
   methods: {
