@@ -13,8 +13,11 @@
               : 'light'
           "
         >
-          Search Star Wars
-          <Link :link="`${API_URL}/${selectedApi}`" :text="selectedApi" />in Galaxy
+          <span v-text="HEADER_NAME_SHORT" />
+          <span>&nbsp;</span>
+          <Link :link="`${API_URL}/${selectedApi}`" :text="selectedApi" />
+          <span>&nbsp;</span>
+          <span v-text="HEADER_NAME_POSTFIX" />
         </h1>
       </v-col>
     </v-row>
@@ -126,6 +129,8 @@ const INPUT_DELAY = 500
 const createInitialState = () => ({
   items: [],
   API_URL,
+  HEADER_NAME_SHORT: process.env.VUE_APP_NAME_SHORT,
+  HEADER_NAME_POSTFIX: process.env.VUE_APP_NAME_POSTFIX,
   IMG_PLACEHOLDER,
   SEARCH_API_LIST,
   selectedApi: SEARCH_API_LIST[0].api,
