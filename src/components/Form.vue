@@ -64,15 +64,20 @@
         <template v-if="items.length && result !== defaultResult">
           <template v-if="imgURL">
             <div class="wrapper">
-              <div class="img">
-                <img
-                  v-for="item in 2"
-                  :key="item"
-                  :src="imgURL"
-                  :alt="selectedApi"
-                  :onerror="`this.onerror=null;this.src='${IMG_PLACEHOLDER}';`"
-                  @click="isDialogShow = !isDialogShow"
-                />
+              <div class="img" role="img" :aria-label="selectedApi">
+                <a
+                  href
+                  @click.prevent="isDialogShow = !isDialogShow"
+                  @keyup="isDialogShow = !isDialogShow"
+                >
+                  <img
+                    v-for="item in 2"
+                    :key="item"
+                    :src="imgURL"
+                    :alt="selectedApi"
+                    :onerror="`this.onerror=null;this.src='${IMG_PLACEHOLDER}';`"
+                  />
+                </a>
               </div>
             </div>
             <Dialog
@@ -98,8 +103,8 @@
 </template>
 
 <script>
-import { IS_DEV } from '@/state'
-import RESULTS from '@/state/fixtures'
+// import { IS_DEV } from '@/state'
+// import RESULTS from '@/state/fixtures'
 import {
   API_URL,
   RESOURCE_URL,
@@ -209,9 +214,10 @@ export default {
     async getData() {
       this.isLoading = true
       const response = await getDataFromApi(this.selectedApi)
-      const items = IS_DEV
+      /* const items = IS_DEV
         ? RESULTS
-        : response?.results
+        : response?.results */
+      const items = response?.results
       if (items.length) {
         this.items = items
       }
