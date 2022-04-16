@@ -1,16 +1,19 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
   },
   extends: [
     'plugin:vue/strongly-recommended',
-    'eslint:recommended'
+    '@vue/airbnb',
   ],
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: '@babel/eslint-parser',
   },
   rules: {
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    semi: 0,
     'vue/max-attributes-per-line': ['error', {
       singleline: { max: 5 },
       multiline: { max: 1, allowFirstLine: false },
@@ -19,15 +22,15 @@ module.exports = {
       html: {
         void: 'always',
         normal: 'always',
-        component: 'always'
+        component: 'always',
       },
       svg: 'always',
-      math: 'always'
+      math: 'always',
     }],
     'vue/singleline-html-element-content-newline': ['error', {
       'ignoreWhenNoAttributes': true,
       'ignoreWhenEmpty': true,
       'ignores': ['pre', 'textarea', 'v-btn', 'span']
     }]
-  }
+  },
 }
