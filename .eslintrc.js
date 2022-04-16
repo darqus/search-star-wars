@@ -5,6 +5,7 @@ module.exports = {
   },
   extends: [
     'plugin:vue/strongly-recommended',
+    'plugin:vuejs-accessibility/recommended',
     '@vue/airbnb',
   ],
   parserOptions: {
