@@ -49,6 +49,7 @@
           clearable
           dense
           @input="onInput"
+          @keyup="onKeyup"
         />
         <DropList
           class="drop-list"
@@ -57,7 +58,9 @@
           :search="search"
           :selected-api="selectedApi"
           :selected-field="selectedField"
+          :is-keyup-arrow-down="isKeyupArrowDown"
           @select="onSelect"
+          @reset="isKeyupArrowDown = false"
         />
       </v-col>
     </v-row>
@@ -135,6 +138,7 @@ const createInitialState = () => ({
   timeout: null,
   isLoading: false,
   isShownDropDown: false,
+  isKeyupArrowDown: false,
   defaultResult: '{}',
   imgURL: null,
   isDialogShow: false,
@@ -211,6 +215,11 @@ export default {
       this.timeout = setTimeout(() => this.getData(), INPUT_DELAY)
 
       return this.timeout
+    },
+    onKeyup(event) {
+      if (event.code === 'ArrowDown') {
+        this.isKeyupArrowDown = true
+      }
     },
     async getData() {
       this.isLoading = true

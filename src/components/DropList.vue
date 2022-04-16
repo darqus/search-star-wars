@@ -5,6 +5,8 @@
         <v-list-item
           v-for="(item, i) in filteredItems"
           :key="i"
+          :ref="['sa', i].join('-')"
+          dense
           @click="$emit('select', item[selectedField])"
         >
           <v-list-item-content>
@@ -44,6 +46,10 @@ export default {
       type: String,
       default: '',
     },
+    isKeyupArrowDown: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     filteredItems() {
@@ -54,9 +60,20 @@ export default {
         .filter((it, idx) => idx < LIMIT_AUTOCOMPLETE_ITEMS)
     },
   },
+  watch: {
+    isKeyupArrowDown() {
+      this.onDropDown()
+    },
+  },
   methods: {
     getSearch(phrase) {
       return getHighlightedStringFromPhrase(phrase, this.search)
+    },
+    onDropDown() {
+      this.$nextTick(() => {
+        this.$refs['sa-0'][0].$el.focus()
+        this.$emit('reset')
+      })
     },
   },
 }
