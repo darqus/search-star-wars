@@ -4,6 +4,7 @@
       <Form :role="role" />
     </v-main>
     <Footer :side="side" />
+    <Refresh />
   </v-app>
 </template>
 
@@ -14,6 +15,7 @@ import { getBrowserTheme } from '@/utils/getBrowserTheme'
 import { setFavicon } from '@/utils/setFavicon'
 import Form from './components/Form'
 import Footer from '@/components/Footer.vue'
+import Refresh from '@/components/Refresh.vue'
 
 const IS_THEME_DARK = 'isThemeDark'
 
@@ -22,6 +24,7 @@ export default {
   components: {
     Form,
     Footer,
+    Refresh
   },
   computed: {
     isDark() {
