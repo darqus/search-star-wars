@@ -51,8 +51,8 @@ export default {
     },
   },
   methods: {
-    getSearch(string) {
-      return getHighlightedStringFromPhrase(string, this.search)
+    getSearch(phrase) {
+      return getHighlightedStringFromPhrase(phrase, this.search)
     },
   },
 }
