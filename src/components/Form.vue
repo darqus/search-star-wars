@@ -92,10 +92,6 @@
             />
           </template>
         </template>
-        <SWCrawlText
-          class="sw-crawl-text"
-          :class="{ mobile: $vuetify.breakpoint.smAndDown }"
-        />
         <template v-if="!$vuetify.breakpoint.smAndDown">
           <Mandala />
           <Mandala :class-name="'right'" />
@@ -120,7 +116,6 @@ import createJSON from '@/utils/createJSON'
 import Logo from '@/components/Logo.vue'
 import DropList from '@/components/DropList.vue'
 import Link from '@/components/Link.vue'
-import SWCrawlText from '@/components/SWCrawlText.vue'
 import Dialog from '@/components/Dialog.vue'
 import Mandala from '@/components/Mandala.vue'
 
@@ -151,7 +146,6 @@ export default {
     Logo,
     DropList,
     Link,
-    SWCrawlText,
     Dialog,
     Mandala,
   },
@@ -334,19 +328,5 @@ export default {
 .img:hover img:nth-child(2) {
   filter: blur(4px);
   transform: scale(1.1);
-}
-
-.sw-crawl-text {
-  position: absolute;
-  top: 10vh;
-  right: 2vh;
-  bottom: 2vh;
-  left: 2vh;
-  z-index: 0;
-}
-
-.sw-crawl-text.mobile {
-  top: -30vh;
-  bottom: -5vh;
 }
 </style>

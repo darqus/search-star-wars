@@ -1,5 +1,9 @@
 <template>
-  <div class="swct-mask" :style="color">
+  <div
+    class="swct-mask"
+    :class="{ mobile: $vuetify.breakpoint.smAndDown }"
+    :style="color"
+  >
     <div class="swct-container">
       <div class="swct-text -js-stop" v-text="text" />
     </div>
@@ -31,19 +35,21 @@ export default {
 
 <style>
 .swct-mask {
-  position: relative;
+  position: absolute;
+  right: 2vw;
+  bottom: 15vh;
+  left: 2vw;
   height: clamp(40vh, 50vh, 60vh);
+  overflow: hidden;
   transform: perspective(150px) rotateX(20deg);
   transform-origin: 50% 100%;
 }
 
+.swct-mask.mobile {
+  bottom: 25vh;
+}
+
 .swct-container {
-  position: absolute;
-  top: -90vh;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: hidden;
   font-size: 4vh;
   text-align: justify;
 }

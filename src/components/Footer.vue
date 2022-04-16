@@ -1,11 +1,12 @@
 <template>
   <v-footer padless>
     <v-container
-      class="g-grid g-align-items-center"
+      class="g-grid g-align-items-center relative"
       :class="
         $vuetify.breakpoint.smAndDown ? 'g-col-initial g-row-gap' : 'g-col-4'
       "
     >
+      <SWCrawlText />
       <div
         class="g-grid"
         :class="
@@ -68,6 +69,7 @@
 
 <script>
 import { LINKS } from '@/state/'
+import SWCrawlText from '@/components/SWCrawlText.vue'
 import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
 import Link from '@/components/Link.vue'
 import SoundButton from '@/components/SoundButton.vue'
@@ -76,6 +78,7 @@ import FooterDropDownInfo from '@/components/FooterDropDownInfo.vue'
 export default {
   name: 'AppFooter',
   components: {
+    SWCrawlText,
     ThemeSwitcher,
     Link,
     SoundButton,
@@ -134,5 +137,9 @@ export default {
 .theme--light.v-footer {
   color: rgb(0 0 0 / 0.47) !important;
   background-color: rgb(245 245 245 / 0.4) !important;
+}
+
+.relative {
+  position: relative;
 }
 </style>
