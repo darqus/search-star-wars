@@ -14,9 +14,10 @@
           <v-btn
             color="gray darken-1"
             text
+            v-text="'OK'"
             @click="dialog = false"
             @keyup="dialog = false"
-          >OK</v-btn>
+          />
         </v-card-actions>
       </v-card>
     </v-dialog>
