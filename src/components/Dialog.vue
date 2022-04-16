@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'Dialog',
+  name: 'AppDialog',
   props: {
     search: {
       type: String,

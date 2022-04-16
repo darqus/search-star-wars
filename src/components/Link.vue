@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'Link',
+  name: 'AppLink',
   props: {
     link: {
       type: String,

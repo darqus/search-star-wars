@@ -8,8 +8,9 @@ const toggleFavicon = (icon) => {
   headTitle.appendChild(newFavicon)
 }
 
-export const setFavicon = (isDark) => {
+const setLinkIcons = (isDark) => {
   const favicon = isDark ? FAVICONS.dark : FAVICONS.light
-  toggleFavicon(`${favicon}.png`)
-  return `${favicon}.png`
+  toggleFavicon(favicon)
 }
+
+export default setLinkIcons

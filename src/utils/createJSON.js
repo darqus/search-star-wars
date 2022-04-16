@@ -4,4 +4,6 @@ const filteredBoolean = ({ ...data }) => Object
   .entries(data)
   .reduce((acc, [key, value]) => (value ? { ...acc, [key]: value } : acc), {})
 
-export const createJSON = ({ ...data }) => renderJSON(filteredBoolean(data))
+const createJSON = ({ ...data }) => renderJSON(filteredBoolean(data))
+
+export default createJSON

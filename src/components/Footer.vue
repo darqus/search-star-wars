@@ -54,7 +54,7 @@
         "
       >
         <small class>
-          <span v-text="`1977 — ${new Date().getFullYear()}`"></span>
+          <span v-text="`1977 — ${new Date().getFullYear()}`" />
           <span class="ml-2">
             🌌
             <FooterDropDownInfo />
@@ -74,12 +74,12 @@ import SoundButton from '@/components/SoundButton.vue'
 import FooterDropDownInfo from '@/components/FooterDropDownInfo.vue'
 
 export default {
-  name: 'Footer',
+  name: 'AppFooter',
   components: {
     ThemeSwitcher,
     Link,
     SoundButton,
-    FooterDropDownInfo
+    FooterDropDownInfo,
   },
   props: {
     side: {

@@ -4,18 +4,18 @@
       <Form :role="role" />
     </v-main>
     <Footer :side="side" />
-    <Refresh />
   </v-app>
 </template>
 
 <script>
-import { THEMES, SIDES, ROLES, BGS } from './state/'
 import { getItem, setItem } from '@/utils/persistanceStorage'
-import { getBrowserTheme } from '@/utils/getBrowserTheme'
-import { setFavicon } from '@/utils/setFavicon'
-import Form from './components/Form'
+import getBrowserTheme from '@/utils/getBrowserTheme'
+import setLinkIcons from '@/utils/setLinkIcons'
 import Footer from '@/components/Footer.vue'
-import Refresh from '@/components/Refresh.vue'
+import Form from '@/components/Form.vue'
+import {
+  THEMES, SIDES, ROLES, BGS,
+} from './state'
 
 const IS_THEME_DARK = 'isThemeDark'
 
@@ -24,7 +24,6 @@ export default {
   components: {
     Form,
     Footer,
-    Refresh
   },
   computed: {
     isDark() {
@@ -59,16 +58,16 @@ export default {
       const browserTheme = getBrowserTheme()
       const isBrowserThemeDark = browserTheme === THEMES.dark
       this.$vuetify.theme.dark = isBrowserThemeDark
-      setFavicon(isBrowserThemeDark)
+      setLinkIcons(isBrowserThemeDark)
     } else {
       this.$vuetify.theme.dark = isLSDark
-      setFavicon(isLSDark)
+      setLinkIcons(isLSDark)
     }
   },
   watch: {
     isDark(value) {
       setItem(IS_THEME_DARK, value)
-      setFavicon(value)
+      setLinkIcons(value)
     },
   },
 }

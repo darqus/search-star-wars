@@ -6,7 +6,7 @@ export const SEARCH_API_LIST = [
   {
     api: 'people',
     searchFields: ['name'],
-    imgApiPath: 'characters'
+    imgApiPath: 'characters',
   },
   {
     api: 'planets',
@@ -16,18 +16,18 @@ export const SEARCH_API_LIST = [
   {
     api: 'films',
     searchFields: ['title'],
-    imgApiPath: 'films'
+    imgApiPath: 'films',
   },
   {
     api: 'species',
     searchFields: ['name'],
-    imgApiPath: 'species'
+    imgApiPath: 'species',
   },
   {
     api: 'vehicles',
     searchFields: [
       'name',
-      'model'
+      'model',
     ],
     imgApiPath: 'vehicles',
   },
@@ -35,7 +35,7 @@ export const SEARCH_API_LIST = [
     api: 'starships',
     searchFields: [
       'name',
-      'model'
+      'model',
     ],
     imgApiPath: 'starships',
   },

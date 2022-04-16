@@ -9,7 +9,7 @@ const getFirstLettersOfWord = (phrase, string) => phrase
   .substring(0, string.length)
 
 export const getHighlightedStringFromPhrase = (phrase, string) => {
-  if (!phrase && !string) return
+  if (!phrase && !string) return ''
 
   const firstLettersOfWord = getFirstLettersOfWord(phrase, string)
   const slpittedPhrase = phrase.split(firstLettersOfWord)

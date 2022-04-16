@@ -99,7 +99,7 @@
 
 <script>
 import { IS_DEV } from '@/state'
-import { RESULTS } from '@/state/fixtures'
+import RESULTS from '@/state/fixtures'
 import {
   API_URL,
   RESOURCE_URL,
@@ -108,7 +108,7 @@ import {
   getDataFromApi,
 } from '@/utils/getDataFromApi'
 import { getIDfromApiUrl } from '@/utils/transformData'
-import { createJSON } from '@/utils/createJSON'
+import createJSON from '@/utils/createJSON'
 import Logo from '@/components/Logo.vue'
 import DropList from '@/components/DropList.vue'
 import Link from '@/components/Link.vue'
@@ -136,7 +136,7 @@ const createInitialState = () => ({
 })
 
 export default {
-  name: 'Form',
+  name: 'AppForm',
   components: {
     Logo,
     DropList,
@@ -158,19 +158,21 @@ export default {
 
       if (!items.length) {
         this.clearResult()
-        return
+        return ''
       }
 
-      const result = items.find((item) => item[selectedField] === search)
+      const findedSelected = items.find((item) => item[selectedField] === search)
 
-      if (!result) {
+      if (!findedSelected) {
         this.clearIMGURL()
-        return
+        return ''
       }
 
-      this.setIMGURL(result.url)
+      this.setIMGURL(findedSelected.url)
 
-      return createJSON(result)
+      const result = createJSON(findedSelected)
+
+      return result
     },
   },
   watch: {
@@ -200,9 +202,9 @@ export default {
       this.isShownDropDown = true
 
       clearTimeout(this.timeout)
-      this.timeout = setTimeout(() => {
-        this.getData()
-      }, INPUT_DELAY)
+      this.timeout = setTimeout(() => this.getData(), INPUT_DELAY)
+
+      return this.timeout
     },
     async getData() {
       this.isLoading = true

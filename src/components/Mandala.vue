@@ -68,7 +68,7 @@
 import { NON_BREAKING_SPACE } from '@/state/'
 
 export default {
-  name: 'Mandala',
+  name: 'AppMandala',
   props: {
     className: {
       type: String,
@@ -83,7 +83,7 @@ export default {
       },
       s2: {
         text: `${NON_BREAKING_SPACE.repeat(
-          2
+          2,
         )};̧΅̮̼<tspan>̧΅</tspan>̃ˬ<tspan>̧</tspan>̧΅̮<tspan>͒̈́</tspan>`,
         len: 7,
       },

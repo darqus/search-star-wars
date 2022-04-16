@@ -6,8 +6,8 @@ export const THEMES = {
 }
 
 export const FAVICONS = {
-  light: 'storm_trooper',
-  dark: 'darth_vader',
+  dark: 'darth_vader.png',
+  light: 'storm_trooper.png',
 }
 
 export const SIDES = {
@@ -52,11 +52,9 @@ export const LINKS = [
   },
 ]
 
-
 export const AUDIO_ICONS = {
   play: 'mdi-play',
   stop: 'mdi-stop',
 }
-
 
 export const NON_BREAKING_SPACE = String.fromCharCode(160)

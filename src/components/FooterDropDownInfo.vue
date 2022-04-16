@@ -1,6 +1,6 @@
 <template>
   <v-menu top offset-y>
-    <template v-slot:activator="{ on, attrs }">
+    <template #activator="{ on, attrs }">
       <a v-bind="attrs" v-on="on" v-text="'SkyNet'" />
     </template>
 
@@ -17,7 +17,7 @@
 <script>
 const INFO = [
   process.env.VUE_APP_VERSION,
-  process.env.VUE_APP_BUILD_DATA
+  process.env.VUE_APP_BUILD_DATA,
 ]
 
 export default {
