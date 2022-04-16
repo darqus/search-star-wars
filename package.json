@@ -1,6 +1,6 @@
 {
   "name": "sw-search-in-galaxy",
-  "version": "3.9.5",
+  "version": "3.9.6",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
