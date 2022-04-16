@@ -191,7 +191,9 @@ export default {
         ({ api }) => api === this.selectedApi,
       ).searchFields
 
-      this.selectedField = searchField[0]
+      const selectedField = searchField[0]
+
+      this.selectedField = selectedField
       this.selectedFields = searchField
 
       this.clearSearch()
