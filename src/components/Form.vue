@@ -27,6 +27,7 @@
         <v-select
           v-model="selectedApi"
           :items="SEARCH_API_LIST"
+          :menu-props="{ auto: true, offsetY: true }"
           item-text="api"
           item-value="api"
           :label="`What you search, ${role}? May the Force be with you`"
@@ -37,6 +38,7 @@
         <v-select
           v-model="selectedField"
           :items="selectedFields"
+          :menu-props="{ auto: true, offsetY: true }"
           label="Selected Field"
           dense
         />
@@ -284,14 +286,16 @@ export default {
   left: 0.8rem;
 }
 
-.drop-list .theme--dark.v-list {
-  color: #fff;
-  background-color: rgb(30 30 30 / 0.4) !important;
+.theme--dark.v-card,
+.theme--dark.v-list {
+  color: rgb(255 255 255);
+  background-color: rgb(30 30 30 / 0.6) !important;
 }
 
-.drop-list .theme--light.v-list {
+.theme--light.v-card,
+.theme--light.v-list {
   color: rgb(0 0 0 / 0.87);
-  background-color: rgb(255 255 255 / 0.05) !important;
+  background-color: rgb(255 255 255 / 0.6) !important;
 }
 
 .wrapper {
