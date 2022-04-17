@@ -7,7 +7,7 @@
       <v-col cols="12" xs="12" sm="8">
         <h1
           class="header-text"
-          :slass="
+          :class="
             $vuetify.theme.dark
               ? 'dark'
               : 'light'
@@ -274,8 +274,8 @@ export default {
 }
 
 .header-text.light {
-  color: #fff;
-  text-shadow: 3px 1px 14px rgb(0 0 0 / 0.6);
+  color: rgb(23 99 161);
+  text-shadow: 1px 1px 4px rgb(0 0 0 / 0.5);
 }
 
 .drop-list {
