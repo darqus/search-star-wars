@@ -69,11 +69,11 @@ export default {
   }
 }
 
-.theme--dark ::selection {
+.theme--dark .swct-mask ::selection {
   color: hsl(60deg 100% 50% / 0.708);
 }
 
-.theme--light ::selection {
+.theme--light .swct-mask ::selection {
   color: hsl(60deg 100% 30% / 0.708);
 }
 </style>
