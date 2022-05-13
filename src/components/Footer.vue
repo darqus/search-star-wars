@@ -132,21 +132,22 @@ export default {
 }
 
 .theme--dark.v-footer {
-  color: rgb(255 255 255 / 0.47) !important;
-  background-color: rgb(39 39 39 / 0.4) !important;
+  color: rgba(255, 255, 255, 0.47) !important;
+  background-color: rgba(39, 39, 39, 0.4) !important;
 }
 
 .theme--light.v-footer {
-  color: rgb(0 0 0 / 0.47) !important;
-  background-color: rgb(245 245 245 / 0.4) !important;
+  color: rgba(0, 0, 0, 0.47) !important;
+  background-color: rgba(245, 245, 245, 0.4) !important;
 }
 
 .theme--dark .footer-icon {
-  filter: invert(0.2) sepia(0.3) drop-shadow(0 4px 3px rgb(255 255 255 / 0.5));
+  filter: invert(0.2) sepia(0.3) drop-shadow(0 4px 3px rgba(255, 255, 255, 0.5));
 }
 
 .theme--light .footer-icon {
-  filter: invert(0.2) sepia(0.3) blur(0.5px) drop-shadow(0 4px 3px rgb(0 0 0 / 0.5));
+  filter: invert(0.2) sepia(0.3) blur(0.5px)
+    drop-shadow(0 4px 3px rgba(0, 0, 0, 0.5));
 }
 
 .relative {

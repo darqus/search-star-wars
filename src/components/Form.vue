@@ -5,14 +5,7 @@
         <Logo />
       </v-col>
       <v-col cols="12" xs="12" sm="8">
-        <h1
-          class="header-text"
-          :class="
-            $vuetify.theme.dark
-              ? 'dark'
-              : 'light'
-          "
-        >
+        <h1 class="header-text" :class="$vuetify.theme.dark ? 'dark' : 'light'">
           <span v-text="HEADER_NAME_SHORT" />
           <span>&nbsp;</span>
           <Link :link="`${API_URL}/${selectedApi}`" :text="selectedApi" />
@@ -22,7 +15,7 @@
       </v-col>
     </v-row>
 
-    <v-row style="position: relative; z-index: 2;">
+    <v-row style="position: relative; z-index: 2">
       <v-col cols="12" xs="12" sm="4">
         <v-select
           v-model="selectedApi"
@@ -43,7 +36,7 @@
           dense
         />
       </v-col>
-      <v-col cols="12" xs="12" sm="4" style="position: relative;">
+      <v-col cols="12" xs="12" sm="4" style="position: relative">
         <v-text-field
           v-model="search"
           :label="`Search ${selectedApi}`"
@@ -67,7 +60,7 @@
       </v-col>
     </v-row>
 
-    <v-row style="position: relative;">
+    <v-row style="position: relative">
       <v-col>
         <template v-if="items.length && result !== defaultResult">
           <template v-if="imgURL">
@@ -171,7 +164,9 @@ export default {
         return ''
       }
 
-      const findedSelected = items.find((item) => item[selectedField] === search)
+      const findedSelected = items.find(
+        (item) => item[selectedField] === search
+      )
 
       if (!findedSelected) {
         this.clearIMGURL()
@@ -193,7 +188,7 @@ export default {
   methods: {
     setSearchField() {
       const searchField = SEARCH_API_LIST.find(
-        ({ api }) => api === this.selectedApi,
+        ({ api }) => api === this.selectedApi
       ).searchFields
 
       const selectedField = searchField[0]
@@ -239,7 +234,7 @@ export default {
       const id = getIDfromApiUrl(url)
 
       const { imgApiPath } = SEARCH_API_LIST.find(
-        ({ api }) => api === this.selectedApi,
+        ({ api }) => api === this.selectedApi
       )
 
       const imgURL = `${RESOURCE_URL}/assets/img/${imgApiPath}/${id}.jpg`
@@ -272,12 +267,12 @@ export default {
 
 .header-text.dark {
   color: #fff;
-  text-shadow: 3px -1px 14px rgb(255 255 255 / 0.6);
+  text-shadow: 3px -1px 14px rgba(255, 255, 255, 0.6);
 }
 
 .header-text.light {
   color: rgb(23 99 161);
-  text-shadow: 1px 1px 4px rgb(0 0 0 / 0.5);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .drop-list {
@@ -289,13 +284,13 @@ export default {
 .theme--dark.v-card,
 .theme--dark.v-list {
   color: rgb(255 255 255);
-  background-color: rgb(30 30 30 / 0.6) !important;
+  background-color: rgba(30, 30, 30, 0.6) !important;
 }
 
 .theme--light.v-card,
 .theme--light.v-list {
-  color: rgb(0 0 0 / 0.87);
-  background-color: rgb(255 255 255 / 0.6) !important;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: rgba(255, 255, 255, 0.6) !important;
 }
 
 .wrapper {
@@ -325,7 +320,7 @@ export default {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  box-shadow: 0 5px 8px rgb(255 255 255 / 0.05);
+  box-shadow: 0 5px 8px rgba(255, 255, 255, 0.05);
   opacity: 0.5;
   transition: 0.5s ease-in-out;
   object-fit: cover;

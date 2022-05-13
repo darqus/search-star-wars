@@ -1,6 +1,5 @@
 {
   "extends": [
-    "stylelint-config-standard",
     "stylelint-config-recommended-vue",
     "stylelint-config-recess-order"
   ],
@@ -9,31 +8,40 @@
     "string-quotes": "double",
     "string-no-newline": null,
     "selector-max-universal": 1,
-    "selector-max-type": [0, { "ignore": ["child", "descendant", "compounded"] }],
-    "max-nesting-depth": [7, {
-      "ignore": [
-        "pseudo-classes",
-        "blockless-at-rules"
-      ],
-      "ignoreAtRules": [
-        "media"
-      ]
-    }],
-    "selector-pseudo-class-no-unknown": [true, {
-      "ignorePseudoClasses": [
-        "global",
-        "export",
-        "import",
-        "local"
-      ]
-    }],
+    "selector-max-type": [
+      0,
+      { "ignore": ["child", "descendant", "compounded"] }
+    ],
+    "max-nesting-depth": [
+      7,
+      {
+        "ignore": ["pseudo-classes", "blockless-at-rules"],
+        "ignoreAtRules": ["media"]
+      }
+    ],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global", "export", "import", "local"]
+      }
+    ],
     "selector-class-pattern": ""
   },
   "overrides": [
     {
       "files": ["*.vue", "**/*.vue"],
       "rules": {
-          "unit-allowed-list": ["em", "rem", "s", "%", "px", "fr", "vw", "vh", "deg"]
+        "unit-allowed-list": [
+          "em",
+          "rem",
+          "s",
+          "%",
+          "px",
+          "fr",
+          "vw",
+          "vh",
+          "deg"
+        ]
       }
     }
   ]
