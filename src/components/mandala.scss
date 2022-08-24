@@ -1,14 +1,22 @@
 .mandala-container {
-  --mandala-primary: #52525e;
-  --mandala-accent-1: #c689ff;
-  --mandala-accent-2: #ffd567;
-  --mandala-accent-3: #88ffd1;
-  --mandala-accent-4: #afafba;
+  --mandala-primary: #b4a0c7;
+  --mandala-accent-1: #a76de0;
+  --mandala-accent-2: #6e59e2;
+  --mandala-accent-3: #de6ee2;
+  --mandala-accent-4: #ee5985;
 
   position: absolute;
   top: -20vh;
   overflow: hidden;
   opacity: 0.4;
+}
+
+.mandala-container.Light {
+  --mandala-primary: #c0a7d8;
+  --mandala-accent-1: #995dd6;
+  --mandala-accent-2: #6651e0;
+  --mandala-accent-3: #c154c5;
+  --mandala-accent-4: #d6527a;
 }
 
 .mandala-container.left {

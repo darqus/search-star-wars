@@ -7,10 +7,10 @@
   overflow: hidden;
   transform: perspective(150px) rotateX(20deg);
   transform-origin: 50% 100%;
+}
 
-  &.mobile {
-    bottom: 25vh;
-  }
+.swct-mask.mobile {
+  bottom: 25vh;
 }
 
 .swct-container {
@@ -23,11 +23,8 @@
   animation: autoscroll 2000s linear;
 }
 
-.swct-text {
-
-  &.js-stop {
-    animation: initial;
-  }
+.swct-text.js-stop {
+  animation: initial;
 }
 
 @keyframes autoscroll {

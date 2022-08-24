@@ -1,7 +1,7 @@
 <template>
   <v-app :style="bg" style="overflow: hidden;">
     <v-main>
-      <Form :role="role" />
+      <Form :role="role" :side="side" />
     </v-main>
     <Footer :side="side" />
   </v-app>

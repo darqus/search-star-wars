@@ -1,5 +1,5 @@
 <template>
-  <div class="mandala-container animate-colors" :class="className" aria-hidden="true">
+  <div class="mandala-container animate-colors" :class="`${className} ${side}`" aria-hidden="true">
     <div
       class="mandala-translate"
       :class="className === 'right' ? 'rotate-right' : 'rotate-left'"
@@ -118,6 +118,10 @@ export default {
     className: {
       type: String,
       default: 'left',
+    },
+    side: {
+      type: String,
+      default: '',
     },
   },
   data: () => ({

@@ -91,8 +91,8 @@
           </template>
         </template>
         <template v-if="!$vuetify.breakpoint.smAndDown">
-          <Mandala />
-          <Mandala :class-name="'right'" />
+          <Mandala :side="side" />
+          <Mandala :side="side" :class-name="'right'" />
         </template>
       </v-col>
     </v-row>
@@ -150,6 +150,10 @@ export default {
   },
   props: {
     role: {
+      type: String,
+      default: '',
+    },
+    side: {
       type: String,
       default: '',
     },
