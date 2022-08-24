@@ -4,6 +4,7 @@
     :class="{ mobile: $vuetify.breakpoint.smAndDown }"
     :style="color"
   >
+    <div class="shadow" />
     <div class="swct-container">
       <div class="swct-text -js-stop" v-text="text" />
     </div>
