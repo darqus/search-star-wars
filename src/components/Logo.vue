@@ -26,21 +26,5 @@ export default {
 </script>
 
 <style>
-.logo {
-  filter: invert(0.12) sepia(0.5) drop-shadow(0 10px 8px rgba(0, 0, 0, 0.5));
-  transform: scale(0.65);
-}
-
-.logo.dark {
-  filter: invert(0.12) sepia(0.5)
-    drop-shadow(0 10px 8px rgba(255, 255, 255, 0.4));
-}
-
-.logo.light {
-  filter: invert(0.12) sepia(0.5) drop-shadow(0 10px 8px rgba(0, 0, 0, 0.5));
-}
-
-.logo path {
-  fill: #fff;
-}
+@import "logo.scss"
 </style>
