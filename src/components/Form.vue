@@ -165,7 +165,7 @@ export default {
       }
 
       const findedSelected = items.find(
-        (item) => item[selectedField] === search
+        (item) => item[selectedField] === search,
       )
 
       if (!findedSelected) {
@@ -188,7 +188,7 @@ export default {
   methods: {
     setSearchField() {
       const searchField = SEARCH_API_LIST.find(
-        ({ api }) => api === this.selectedApi
+        ({ api }) => api === this.selectedApi,
       ).searchFields
 
       const selectedField = searchField[0]
@@ -234,7 +234,7 @@ export default {
       const id = getIDfromApiUrl(url)
 
       const { imgApiPath } = SEARCH_API_LIST.find(
-        ({ api }) => api === this.selectedApi
+        ({ api }) => api === this.selectedApi,
       )
 
       const imgURL = `${RESOURCE_URL}/assets/img/${imgApiPath}/${id}.jpg`

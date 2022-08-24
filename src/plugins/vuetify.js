@@ -1,6 +1,8 @@
-import Vue from 'vue'
-import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+
+import Vue from 'vue'
+
+import Vuetify from 'vuetify'
 import ru from 'vuetify/lib/locale/ru'
 import colors from 'vuetify/lib/util/colors'
 
