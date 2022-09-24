@@ -4,7 +4,7 @@
       <a v-bind="attrs" v-on="on" v-text="'SkyNet'" />
     </template>
 
-    <v-list style="opacity: 0.5;">
+    <v-list style="opacity: 0.5">
       <v-list-item>
         <v-list-item-title>
           <small v-html="info" />
@@ -15,10 +15,7 @@
 </template>
 
 <script>
-const INFO = [
-  process.env.VUE_APP_VERSION,
-  process.env.VUE_APP_BUILD_DATA,
-]
+const INFO = [process.env.VUE_APP_VERSION, process.env.VUE_APP_BUILD_DATE]
 
 export default {
   name: 'FooterDropDownInfo',

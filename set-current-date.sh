@@ -3,7 +3,7 @@
 CDATE=`date +"%Y-%m-%d %T"`
 echo $CDATE
 
-sed -i "s/^VUE_APP_BUILD_DATA.*/VUE_APP_BUILD_DATA=$CDATE/g" .env.local
+sed -i "s/^VUE_APP_BUILD_DATE.*/VUE_APP_BUILD_DATE=$CDATE/g" .env.local
 
 prop="version"
 VERSION="$(node -e "console.log(require('./package.json')['$prop'])")"
