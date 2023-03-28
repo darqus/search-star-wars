@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "publish:gh": "sh ./publish.sh",
+    "publish:gh": "bash publish.sh",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
