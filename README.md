@@ -1,5 +1,7 @@
 # Star Wars search in Galaxy
 
+> Updated to use the new Star Wars API v3 (June 2025)
+
 ### Links
 
 [Preview](https://darqus.github.io/search-star-wars/dist/)
