@@ -19,9 +19,26 @@ echo
 
 vue-cli-service build
 
+# Store current branch
+CURRENT_BRANCH=$(git branch --show-current)
+
+# Temporarily store the dist folder
+cp -r dist ../temp_dist_$(date +%s)
+TEMP_DIR="../temp_dist_$(date +%s)"
+
 git checkout gh-pages
+
+# Clean and copy the new build files
+rm -rf dist/
+mkdir -p dist/
+cp -r ../temp_dist_*/* dist/
+
+# Clean up temporary folder
+rm -rf ../temp_dist_*
 
 git add .
 git commit -m "$COMMENT"
 git push
-git checkout main
+
+# Return to original branch
+git checkout $CURRENT_BRANCH
