@@ -127,7 +127,6 @@ const createInitialState = () => ({
   SEARCH_API_LIST,
   selectedApi: SEARCH_API_LIST[0].api,
   selectedField: SEARCH_API_LIST[0].searchFields[0],
-  // selectedFields: SEARCH_API_LIST[0].searchFields,
   search: '',
   timeout: null,
   isLoading: false,
@@ -197,7 +196,6 @@ export default {
       const selectedField = searchField[0]
 
       this.selectedField = selectedField
-      // this.selectedFields = searchField
 
       this.clearSearch()
     },
