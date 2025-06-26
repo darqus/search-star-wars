@@ -109,7 +109,6 @@ import {
   SEARCH_API_LIST,
   getDataFromApi,
 } from '@/utils/getDataFromApi'
-import { getIDfromApiUrl } from '@/utils/transformData'
 import createJSON from '@/utils/createJSON'
 import Logo from '@/components/Logo.vue'
 import DropList from '@/components/DropList.vue'
@@ -135,7 +134,7 @@ const createInitialState = () => ({
   isShownDropDown: false,
   isKeyupArrowDown: false,
   defaultResult: '{}',
-  imgURL: null,
+  imgURL: IMG_PLACEHOLDER,
   isDialogShow: false,
 })
 
@@ -177,7 +176,7 @@ export default {
         return ''
       }
 
-      this.setIMGURL(findedSelected.url)
+      this.setIMGURL(findedSelected)
 
       const result = createJSON(findedSelected)
 
@@ -224,7 +223,7 @@ export default {
     },
     async getData() {
       this.isLoading = true
-      const response = await getDataFromApi(this.selectedApi)
+      const response = await getDataFromApi(this.selectedApi, this.search)
       /* const items = IS_DEV
         ? RESULTS
         : response?.results */
@@ -234,22 +233,20 @@ export default {
       }
       this.isLoading = false
     },
-    setIMGURL(url) {
-      const id = getIDfromApiUrl(url)
-
-      const { imgApiPath } = SEARCH_API_LIST.find(
-        ({ api }) => api === this.selectedApi,
-      )
-
-      const imgURL = `${RESOURCE_URL}/assets/img/${imgApiPath}/${id}.jpg`
-
-      this.imgURL = imgURL
+    setIMGURL(item) {
+      // The new API provides image path directly in the response
+      if (item && item.image) {
+        this.imgURL = `${RESOURCE_URL}/image/${item.image}`
+      } else {
+        // Fallback to placeholder
+        this.imgURL = IMG_PLACEHOLDER
+      }
     },
     onDialog(value) {
       this.isDialogShow = value
     },
     clearIMGURL() {
-      this.imgURL = null
+      this.imgURL = IMG_PLACEHOLDER
     },
     clearResult() {
       this.defaultResult = '{}'

@@ -31,7 +31,7 @@ export const LINKS = [
     text: 'Vuetify',
   },
   {
-    link: 'https://swapi.dev/api',
+    link: 'https://star-wars-api-v3.netlify.app/',
     text: 'API',
   },
   {
