@@ -62,33 +62,33 @@
 
     <v-row style="position: relative">
       <v-col>
-        <template v-if="items.length && result !== defaultResult">
-          <template v-if="imgURL">
-            <div class="wrapper">
-              <div class="img" role="img" :aria-label="selectedApi">
-                <a
-                  href
-                  @click.prevent="isDialogShow = !isDialogShow"
-                  @keyup="isDialogShow = !isDialogShow"
-                >
-                  <img
-                    v-for="item in 2"
-                    :key="item"
-                    :src="imgURL"
-                    :alt="selectedApi"
-                    :onerror="`this.onerror=null;this.src='${IMG_PLACEHOLDER}';`"
-                  />
-                </a>
-              </div>
+        <template v-if="imgURL && imgURL !== IMG_PLACEHOLDER">
+          <div class="wrapper">
+            <div class="img" role="img" :aria-label="selectedApi">
+              <a
+                href
+                @click.prevent="isDialogShow = !isDialogShow"
+                @keyup="isDialogShow = !isDialogShow"
+              >
+                <img
+                  v-for="item in 2"
+                  :key="item"
+                  :src="imgURL"
+                  :alt="selectedApi"
+                  :onerror="`this.onerror=null;this.src='${IMG_PLACEHOLDER}';`"
+                />
+              </a>
             </div>
-            <Dialog
-              class="my-5"
-              :search="search"
-              :result="result"
-              :is-dialog-show="isDialogShow"
-              @dialog="onDialog"
-            />
-          </template>
+          </div>
+        </template>
+        <template v-if="items.length && result !== defaultResult">
+          <Dialog
+            class="my-5"
+            :search="search"
+            :result="result"
+            :is-dialog-show="isDialogShow"
+            @dialog="onDialog"
+          />
         </template>
         <template v-if="!$vuetify.breakpoint.smAndDown">
           <Mandala :side="side" />
@@ -171,7 +171,7 @@ export default {
       )
 
       if (!foundSelected) {
-        this.clearImgUrl()
+        // Don't clear image URL here anymore - let it persist
         return ''
       }
 
@@ -203,6 +203,15 @@ export default {
       this.search = select
       this.isShownDropDown = false
       this.timeout = null
+
+      // Find the selected item and set its image immediately
+      const selectedItem = this.items.find(
+        (item) => item[this.selectedField] === select,
+      )
+
+      if (selectedItem) {
+        this.setImgUrl(selectedItem)
+      }
     },
     onInput(event) {
       if (!event) return this.clearSearch()
@@ -255,6 +264,7 @@ export default {
       this.search = ''
       this.items = []
       this.timeout = null
+      this.clearImgUrl() // Clear image when completely clearing search
     },
   },
 }
