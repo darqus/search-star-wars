@@ -16,7 +16,7 @@
     </v-row>
 
     <v-row style="position: relative; z-index: 2">
-      <v-col cols="12" xs="12" sm="4">
+      <v-col cols="12" xs="12" sm="6">
         <v-select
           v-model="selectedApi"
           :items="SEARCH_API_LIST"
@@ -27,7 +27,7 @@
           dense
         />
       </v-col>
-      <v-col cols="12" xs="12" sm="4">
+      <!-- <v-col cols="12" xs="12" sm="4">
         <v-select
           v-model="selectedField"
           :items="selectedFields"
@@ -35,8 +35,8 @@
           label="Selected Field"
           dense
         />
-      </v-col>
-      <v-col cols="12" xs="12" sm="4" style="position: relative">
+      </v-col> -->
+      <v-col cols="12" xs="12" sm="6" style="position: relative">
         <v-text-field
           v-model="search"
           :label="`Search ${selectedApi}`"
@@ -127,7 +127,7 @@ const createInitialState = () => ({
   SEARCH_API_LIST,
   selectedApi: SEARCH_API_LIST[0].api,
   selectedField: SEARCH_API_LIST[0].searchFields[0],
-  selectedFields: SEARCH_API_LIST[0].searchFields,
+  // selectedFields: SEARCH_API_LIST[0].searchFields,
   search: '',
   timeout: null,
   isLoading: false,
@@ -197,7 +197,7 @@ export default {
       const selectedField = searchField[0]
 
       this.selectedField = selectedField
-      this.selectedFields = searchField
+      // this.selectedFields = searchField
 
       this.clearSearch()
     },
