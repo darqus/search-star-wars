@@ -167,18 +167,18 @@ export default {
         return ''
       }
 
-      const findedSelected = items.find(
+      const foundSelected = items.find(
         (item) => item[selectedField] === search,
       )
 
-      if (!findedSelected) {
-        this.clearIMGURL()
+      if (!foundSelected) {
+        this.clearImgUrl()
         return ''
       }
 
-      this.setIMGURL(findedSelected)
+      this.setImgUrl(foundSelected)
 
-      const result = createJSON(findedSelected)
+      const result = createJSON(foundSelected)
 
       return result
     },
@@ -233,10 +233,12 @@ export default {
       }
       this.isLoading = false
     },
-    setIMGURL(item) {
+    setImgUrl(item) {
       // The new API provides image path directly in the response
       if (item && item.image) {
-        this.imgURL = `${RESOURCE_URL}/image/${item.image}`
+        // Remove "images/" prefix from the path for the /image/ endpoint
+        const imagePath = item.image.replace(/^images\//, '')
+        this.imgURL = `${RESOURCE_URL}/image/${imagePath}`
       } else {
         // Fallback to placeholder
         this.imgURL = IMG_PLACEHOLDER
@@ -245,7 +247,7 @@ export default {
     onDialog(value) {
       this.isDialogShow = value
     },
-    clearIMGURL() {
+    clearImgUrl() {
       this.imgURL = IMG_PLACEHOLDER
     },
     clearResult() {
