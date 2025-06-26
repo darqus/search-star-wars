@@ -8,4 +8,10 @@ module.exports = defineConfig({
   transpileDependencies: ['vuetify'],
   // transpileDependencies: true,
   lintOnSave: true,
+  configureWebpack: {
+    performance: {
+      // Disable asset size limit warnings
+      hints: false,
+    },
+  },
 })
