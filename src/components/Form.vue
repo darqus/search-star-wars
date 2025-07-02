@@ -243,9 +243,8 @@ export default {
     setImgUrl(item) {
       // The new API provides image path directly in the response
       if (item && item.image) {
-        // Remove "images/" prefix from the path for the /image/ endpoint
-        const imagePath = item.image.replace(/^images\//, '')
-        this.imgURL = `${RESOURCE_URL}/image/${imagePath}`
+        // Use the direct path from the API response
+        this.imgURL = `${RESOURCE_URL}/${item.image}`
       } else {
         // Fallback to placeholder
         this.imgURL = IMG_PLACEHOLDER
