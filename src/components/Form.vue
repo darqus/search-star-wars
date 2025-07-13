@@ -44,6 +44,7 @@
           item-value="name"
           :menu-props="{ auto: true, offsetY: true }"
           class="select"
+          :label="`Selected ${selectedApi}`"
           dense
           v-model="selectedName"
           @change="onSelect(selectedName)"
