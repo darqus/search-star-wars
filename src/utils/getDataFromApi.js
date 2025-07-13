@@ -44,7 +44,8 @@ export const SEARCH_API_LIST = [
 export const getDataFromApi = async (
   selectedApi,
   searchQuery = '',
-  limit = 5
+  limit = 20,
+  page = 1
 ) => {
   let url = `${API_URL}/${selectedApi}`
 
@@ -55,7 +56,8 @@ export const getDataFromApi = async (
     params.append('search', searchQuery)
   }
 
-  // Add limit parameter
+  // Add pagination parameters
+  params.append('page', page.toString())
   params.append('limit', limit.toString())
 
   if (params.toString()) {

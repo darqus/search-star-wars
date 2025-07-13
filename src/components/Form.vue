@@ -16,7 +16,7 @@
     </v-row>
 
     <v-row style="position: relative; z-index: 2">
-      <v-col cols="12" xs="12" sm="6">
+      <v-col cols="12" xs="12" sm="4">
         <v-select
           v-model="selectedApi"
           :items="SEARCH_API_LIST"
@@ -27,16 +27,17 @@
           dense
         />
       </v-col>
-      <!-- <v-col cols="12" xs="12" sm="4">
-        <v-select
-          v-model="selectedField"
-          :items="selectedFields"
-          :menu-props="{ auto: true, offsetY: true }"
-          label="Selected Field"
-          dense
+      <v-col cols="12" xs="12" sm="4" style="position: relative">
+        <v-pagination
+          v-model="currentPage"
+          :length="totalPages"
+          :total-visible="7"
+          :loading="isLoading"
+          @input="onPageChange"
+          circle
         />
-      </v-col> -->
-      <v-col cols="12" xs="12" sm="6" style="position: relative">
+      </v-col>
+      <v-col cols="12" xs="12" sm="4" style="position: relative">
         <v-text-field
           v-model="search"
           :label="`Search ${selectedApi}`"
@@ -135,6 +136,9 @@ const createInitialState = () => ({
   defaultResult: '{}',
   imgURL: IMG_PLACEHOLDER,
   isDialogShow: false,
+  currentPage: 1,
+  totalPages: 1,
+  pageSize: 20,
 })
 
 export default {
@@ -157,6 +161,9 @@ export default {
     },
   },
   data: () => createInitialState(),
+  async mounted() {
+    await this.getData()
+  },
   computed: {
     result() {
       const { items, selectedField, search } = this
@@ -166,9 +173,7 @@ export default {
         return ''
       }
 
-      const foundSelected = items.find(
-        (item) => item[selectedField] === search,
-      )
+      const foundSelected = items.find((item) => item[selectedField] === search)
 
       if (!foundSelected) {
         // Don't clear image URL here anymore - let it persist
@@ -183,14 +188,18 @@ export default {
     },
   },
   watch: {
-    selectedApi() {
-      this.setSearchField()
+    selectedApi(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.currentPage = 1
+        this.setSearchField()
+        this.getData()
+      }
     },
   },
   methods: {
     setSearchField() {
       const searchField = SEARCH_API_LIST.find(
-        ({ api }) => api === this.selectedApi,
+        ({ api }) => api === this.selectedApi
       ).searchFields
 
       const selectedField = searchField[0]
@@ -206,7 +215,7 @@ export default {
 
       // Find the selected item and set its image immediately
       const selectedItem = this.items.find(
-        (item) => item[this.selectedField] === select,
+        (item) => item[this.selectedField] === select
       )
 
       if (selectedItem) {
@@ -230,15 +239,23 @@ export default {
     },
     async getData() {
       this.isLoading = true
-      const response = await getDataFromApi(this.selectedApi, this.search)
-      /* const items = IS_DEV
-        ? RESULTS
-        : response?.results */
+      const response = await getDataFromApi(
+        this.selectedApi,
+        this.search,
+        this.pageSize,
+        this.currentPage
+      )
       const items = response?.results
-      if (items.length) {
+      if (items) {
         this.items = items
+        this.totalPages = response.pages || 1
       }
       this.isLoading = false
+    },
+
+    onPageChange(page) {
+      this.currentPage = page
+      this.getData()
     },
     setImgUrl(item) {
       // The new API provides image path directly in the response
@@ -270,5 +287,5 @@ export default {
 </script>
 
 <style>
-@import "form.scss"
+@import 'form.scss';
 </style>
