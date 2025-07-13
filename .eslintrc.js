@@ -15,23 +15,33 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     semi: ['error', 'never'],
-    'vue/max-attributes-per-line': ['error', {
-      singleline: { max: 5 },
-      multiline: { max: 1 },
-    }],
-    'vue/html-self-closing': ['error', {
-      html: {
-        void: 'always',
-        normal: 'always',
-        component: 'always',
+    'comma-dangle': ['error', 'always-multiline'],
+    'vue/max-attributes-per-line': [
+      'error',
+      {
+        singleline: { max: 5 },
+        multiline: { max: 1 },
       },
-      svg: 'always',
-      math: 'always',
-    }],
-    'vue/singleline-html-element-content-newline': ['error', {
-      ignoreWhenNoAttributes: true,
-      ignoreWhenEmpty: true,
-      ignores: ['pre', 'textarea', 'v-btn', 'span'],
-    }],
+    ],
+    'vue/html-self-closing': [
+      'error',
+      {
+        html: {
+          void: 'always',
+          normal: 'always',
+          component: 'always',
+        },
+        svg: 'always',
+        math: 'always',
+      },
+    ],
+    'vue/singleline-html-element-content-newline': [
+      'error',
+      {
+        ignoreWhenNoAttributes: true,
+        ignoreWhenEmpty: true,
+        ignores: ['pre', 'textarea', 'v-btn', 'span'],
+      },
+    ],
   },
 }
