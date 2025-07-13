@@ -199,7 +199,7 @@ export default {
   methods: {
     setSearchField() {
       const searchField = SEARCH_API_LIST.find(
-        ({ api }) => api === this.selectedApi
+        ({ api }) => api === this.selectedApi,
       ).searchFields
 
       const selectedField = searchField[0]
@@ -215,7 +215,7 @@ export default {
 
       // Find the selected item and set its image immediately
       const selectedItem = this.items.find(
-        (item) => item[this.selectedField] === select
+        (item) => item[this.selectedField] === select,
       )
 
       if (selectedItem) {
@@ -243,7 +243,7 @@ export default {
         this.selectedApi,
         this.search,
         this.pageSize,
-        this.currentPage
+        this.currentPage,
       )
       const items = response?.results
       if (items) {
@@ -255,7 +255,6 @@ export default {
       }
       this.isLoading = false
     },
-
     onPageChange(page) {
       this.currentPage = page
       this.getData()
