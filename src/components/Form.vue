@@ -55,6 +55,7 @@
           v-model="search"
           :label="`Search ${selectedApi}`"
           :loading="isLoading"
+          class="text-field"
           clearable
           dense
           @input="onInput"
@@ -223,7 +224,6 @@ export default {
       this.clearSearch()
     },
     onSelect(select) {
-      this.search = select
       this.isShownDropDown = false
       this.timeout = null
 
