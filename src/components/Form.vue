@@ -256,6 +256,7 @@ export default {
       this.isLoading = false
     },
     onPageChange(page) {
+      this.clearSearch()
       this.currentPage = page
       this.getData()
     },
