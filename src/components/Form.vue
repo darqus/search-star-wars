@@ -58,6 +58,7 @@
           class="text-field"
           clearable
           dense
+          debounce="500"
           @input="onInput"
           @keyup="onKeyup"
         />
@@ -130,8 +131,6 @@ import DropList from '@/components/DropList.vue'
 import Link from '@/components/Link.vue'
 import Dialog from '@/components/Dialog.vue'
 import Mandala from '@/components/Mandala.vue'
-
-const INPUT_DELAY = 500
 
 const createInitialState = () => ({
   items: [],
@@ -239,12 +238,15 @@ export default {
     onInput(event) {
       if (!event) return this.clearSearch()
 
-      this.isShownDropDown = true
+      if (this.search && this.search.length >= 3) {
+        this.isShownDropDown = true
+        this.getData()
+      } else {
+        this.isShownDropDown = false
+        this.clearSearch()
+      }
 
-      clearTimeout(this.timeout)
-      this.timeout = setTimeout(() => this.getData(), INPUT_DELAY)
-
-      return this.timeout
+      return undefined
     },
     onKeyup(event) {
       if (event.code === 'ArrowDown') {
@@ -296,7 +298,7 @@ export default {
     },
     clearSearch() {
       this.search = ''
-      this.items = []
+      // this.items = []
       this.timeout = null
       this.clearImgUrl() // Clear image when completely clearing search
     },
