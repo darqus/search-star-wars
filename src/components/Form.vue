@@ -209,6 +209,7 @@ export default {
       this.clearSearch()
     },
     onSelect(select) {
+      console.log(select)
       this.search = select
       this.isShownDropDown = false
       this.timeout = null
@@ -250,7 +251,7 @@ export default {
         this.items = items
         this.totalPages = response.pages || 1
         if (items.length > 0) {
-          this.setImgUrl(items[0])
+          this.onSelect(items[0].name)
         }
       }
       this.isLoading = false
