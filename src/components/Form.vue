@@ -16,7 +16,7 @@
     </v-row>
 
     <v-row style="position: relative; z-index: 2">
-      <v-col cols="12" xs="12" sm="4">
+      <v-col cols="12" xs="12" sm="3">
         <v-select
           v-model="selectedApi"
           :items="SEARCH_API_LIST"
@@ -27,7 +27,7 @@
           dense
         />
       </v-col>
-      <v-col cols="12" xs="12" sm="4" style="position: relative">
+      <v-col cols="12" xs="12" sm="3" style="position: relative">
         <v-pagination
           v-model="currentPage"
           :length="totalPages"
@@ -37,7 +37,19 @@
           circle
         />
       </v-col>
-      <v-col cols="12" xs="12" sm="4" style="position: relative">
+      <v-col cols="12" xs="12" sm="3" style="position: relative">
+        <v-select
+          :items="items"
+          item-text="name"
+          item-value="name"
+          :menu-props="{ auto: true, offsetY: true }"
+          class="select"
+          dense
+          v-model="selectedName"
+          @change="onSelect(selectedName)"
+        />
+      </v-col>
+      <v-col cols="12" xs="12" sm="3" style="position: relative">
         <v-text-field
           v-model="search"
           :label="`Search ${selectedApi}`"
@@ -139,6 +151,7 @@ const createInitialState = () => ({
   currentPage: 1,
   totalPages: 1,
   pageSize: 20,
+  selectedName: '',
 })
 
 export default {
@@ -209,7 +222,6 @@ export default {
       this.clearSearch()
     },
     onSelect(select) {
-      console.log(select)
       this.search = select
       this.isShownDropDown = false
       this.timeout = null
@@ -251,6 +263,7 @@ export default {
         this.items = items
         this.totalPages = response.pages || 1
         if (items.length > 0) {
+          this.selectedName = items[0].name
           this.onSelect(items[0].name)
         }
       }
