@@ -249,6 +249,9 @@ export default {
       if (items) {
         this.items = items
         this.totalPages = response.pages || 1
+        if (items.length > 0) {
+          this.setImgUrl(items[0])
+        }
       }
       this.isLoading = false
     },
