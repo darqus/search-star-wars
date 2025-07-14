@@ -224,9 +224,8 @@ export default {
     },
     onSelect(select) {
       this.isShownDropDown = false
-      this.timeout = null
 
-      // Find the selected item and set its image immediately
+      // Find and store the selected item
       const selectedItem = this.items.find(
         (item) => item[this.selectedField] === select,
       )
@@ -305,7 +304,6 @@ export default {
     clearSearch() {
       this.search = ''
       // this.items = []
-      this.timeout = null
       this.clearImgUrl() // Clear image when completely clearing search
     },
   },
