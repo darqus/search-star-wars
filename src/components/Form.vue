@@ -180,14 +180,16 @@ export default {
   },
   computed: {
     result() {
-      const { items, selectedField, search } = this
+      const { items, selectedField, search, selectedName } = this
 
       if (!items.length) {
         this.clearResult()
         return ''
       }
 
-      const foundSelected = items.find((item) => item[selectedField] === search)
+      const foundSelected = items.find(
+        (item) => item[selectedField] === search || selectedName,
+      )
 
       if (!foundSelected) {
         // Don't clear image URL here anymore - let it persist
