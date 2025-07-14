@@ -5,9 +5,11 @@
       :max-width="$vuetify.breakpoint.smAndDown ? '100%' : 560"
     >
       <v-card>
-        <v-card-title class="text-h5" v-text="search" />
+        <v-card-title class="text-h5">
+          {{ result?.name || result?.title || 'Details' }}
+        </v-card-title>
         <v-card-text>
-          <pre class="result" v-text="result" />
+          <pre class="result">{{ formattedResult }}</pre>
         </v-card-text>
         <v-card-actions>
           <v-spacer />
@@ -26,15 +28,16 @@
 
 <script>
 export default {
+  computed: {
+    formattedResult() {
+      return JSON.stringify(this.result, null, 2)
+    },
+  },
   name: 'AppDialog',
   props: {
-    search: {
-      type: String,
-      default: '',
-    },
     result: {
-      type: String,
-      default: '',
+      type: Object,
+      default: () => {},
     },
     isDialogShow: {
       type: Boolean,

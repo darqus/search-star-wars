@@ -100,8 +100,7 @@
         <template v-if="items.length && result !== defaultResult">
           <Dialog
             class="my-5"
-            :search="search"
-            :result="result"
+            :result="selectedItem || {}"
             :is-dialog-show="isDialogShow"
             @dialog="onDialog"
           />
@@ -125,7 +124,7 @@ import {
   SEARCH_API_LIST,
   getDataFromApi,
 } from '@/utils/getDataFromApi'
-import createJSON from '@/utils/createJSON'
+
 import Logo from '@/components/Logo.vue'
 import DropList from '@/components/DropList.vue'
 import Link from '@/components/Link.vue'
@@ -174,7 +173,10 @@ export default {
       default: '',
     },
   },
-  data: () => createInitialState(),
+  data: () => ({
+    ...createInitialState(),
+    selectedItem: null,
+  }),
   async mounted() {
     await this.getData()
   },
@@ -187,20 +189,10 @@ export default {
         return ''
       }
 
-      const foundSelected = items.find(
-        (item) => item[selectedField] === search || selectedName,
+      return (
+        items.find((item) => item[selectedField] === search || selectedName) ||
+        ''
       )
-
-      if (!foundSelected) {
-        // Don't clear image URL here anymore - let it persist
-        return ''
-      }
-
-      this.setImgUrl(foundSelected)
-
-      const result = createJSON(foundSelected)
-
-      return result
     },
   },
   watch: {
@@ -226,15 +218,17 @@ export default {
     },
     onSelect(select) {
       this.isShownDropDown = false
+      this.search = select
 
       // Find and store the selected item
-      const selectedItem = this.items.find(
+      this.selectedItem = this.items.find(
         (item) => item[this.selectedField] === select,
       )
 
-      if (selectedItem) {
-        this.setImgUrl(selectedItem)
-      }
+      // Update image immediately
+      this.imgURL = this.selectedItem?.image
+        ? `${RESOURCE_URL}/${this.selectedItem.image}`
+        : IMG_PLACEHOLDER
     },
     onInput(event) {
       if (!event) {
@@ -283,16 +277,6 @@ export default {
       this.clearSearch()
       this.currentPage = page
       this.getData()
-    },
-    setImgUrl(item) {
-      // The new API provides image path directly in the response
-      if (item && item.image) {
-        // Use the direct path from the API response
-        this.imgURL = `${RESOURCE_URL}/${item.image}`
-      } else {
-        // Fallback to placeholder
-        this.imgURL = IMG_PLACEHOLDER
-      }
     },
     onDialog(value) {
       this.isDialogShow = value
