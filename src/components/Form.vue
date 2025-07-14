@@ -236,14 +236,20 @@ export default {
       }
     },
     onInput(event) {
-      if (!event) return this.clearSearch()
+      if (!event) {
+        this.clearSearch()
+        return undefined
+      }
 
+      // Only search when 3+ characters entered
       if (this.search && this.search.length >= 3) {
         this.isShownDropDown = true
         this.getData()
       } else {
         this.isShownDropDown = false
-        this.clearSearch()
+        if (!this.search) {
+          this.clearSearch()
+        }
       }
 
       return undefined
@@ -265,7 +271,7 @@ export default {
       if (items) {
         this.items = items
         this.totalPages = response.pages || 1
-        if (items.length > 0) {
+        if (items.length > 0 && this.search === '') {
           this.selectedName = items[0].name
           this.onSelect(items[0].name)
         }
