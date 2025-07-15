@@ -38,40 +38,22 @@
         />
       </v-col>
       <v-col cols="12" xs="12" sm="3" style="position: relative">
-        <v-select
+        <SelectControl
           :items="items"
-          item-text="name"
-          item-value="name"
-          :menu-props="{ auto: true, offsetY: true }"
-          class="select"
-          :label="`Selected ${selectedApi}`"
-          dense
-          v-model="selectedName"
-          @change="onSelect(selectedName)"
+          :selected-api="selectedApi"
+          :selected-name="selectedName"
+          @select="onSelectFromSelect"
         />
       </v-col>
       <v-col cols="12" xs="12" sm="3" style="position: relative">
-        <v-text-field
-          v-model="search"
-          :label="`Search ${selectedApi}`"
-          :loading="isLoading"
-          class="text-field"
-          clearable
-          dense
-          debounce="500"
-          @input="onInput"
-          @keyup="onKeyup"
-        />
-        <DropList
-          class="drop-list"
-          v-if="items.length && isShownDropDown"
-          :items="items"
-          :search="search"
+        <SearchField
+          :items="searchResults"
           :selected-api="selectedApi"
-          :selected-field="selectedField"
-          :is-keyup-arrow-down="isKeyupArrowDown"
-          @select="onSelect"
-          @reset="isKeyupArrowDown = false"
+          :is-loading="isSearchLoading"
+          :search="search"
+          :is-shown-drop-down="isShownDropDown"
+          @search-input="onSearchInput"
+          @select="onSelectFromSearch"
         />
       </v-col>
     </v-row>
@@ -126,10 +108,12 @@ import {
 } from '@/utils/getDataFromApi'
 
 import Logo from '@/components/Logo.vue'
-import DropList from '@/components/DropList.vue'
+// DropList теперь используется только внутри SearchField.vue
 import Link from '@/components/Link.vue'
 import Dialog from '@/components/Dialog.vue'
 import Mandala from '@/components/Mandala.vue'
+import SearchField from './SearchField.vue'
+import SelectControl from './SelectControl.vue'
 
 const createInitialState = () => ({
   items: [],
@@ -158,10 +142,11 @@ export default {
   name: 'AppForm',
   components: {
     Logo,
-    DropList,
     Link,
     Dialog,
     Mandala,
+    SearchField,
+    SelectControl,
   },
   props: {
     role: {
@@ -176,23 +161,22 @@ export default {
   data: () => ({
     ...createInitialState(),
     selectedItem: null,
+    searchResults: [], // результаты поиска
+    isSearchLoading: false, // состояние загрузки поиска
+    isShownDropDown: false, // состояние показа выпадающего списка
   }),
   async mounted() {
     await this.getData()
   },
   computed: {
     result() {
-      const { items, selectedField, search, selectedName } = this
-
-      if (!items.length) {
+      const { items, selectedItem, searchResults } = this
+      if (!items.length && !searchResults.length) {
         this.clearResult()
         return ''
       }
-
-      return (
-        items.find((item) => item[selectedField] === search || selectedName) ||
-        ''
-      )
+      // Показываем выбранный элемент, если есть
+      return selectedItem || ''
     },
   },
   watch: {
@@ -209,56 +193,51 @@ export default {
       const searchField = SEARCH_API_LIST.find(
         ({ api }) => api === this.selectedApi,
       ).searchFields
-
       const selectedField = searchField[0]
-
       this.selectedField = selectedField
-
       this.clearSearch()
     },
-    onSelect(select) {
-      this.isShownDropDown = false
-      this.search = select
-
-      // Find and store the selected item
-      this.selectedItem = this.items.find(
-        (item) => item[this.selectedField] === select,
-      )
-
-      // Update image immediately
-      this.imgURL = this.selectedItem?.image
-        ? `${RESOURCE_URL}/${this.selectedItem.image}`
-        : IMG_PLACEHOLDER
+    onSelectFromSelect(name) {
+      this.selectedName = name
+      this.selectedItem = this.items.find((item) => item[this.selectedField] === name)
+      this.imgURL = this.selectedItem?.image ? `${RESOURCE_URL}/${this.selectedItem.image}` : IMG_PLACEHOLDER
     },
-    onInput(event) {
-      if (!event) {
-        this.clearSearch()
-        return undefined
-      }
-
-      // Only search when 3+ characters entered
-      if (this.search && this.search.length >= 3) {
-        this.isShownDropDown = true
-        this.getData()
-      } else {
+    async onSearchInput(value) {
+      this.search = value
+      if (!value || value.length < 3) {
+        this.searchResults = []
         this.isShownDropDown = false
-        if (!this.search) {
-          this.clearSearch()
-        }
+        this.isSearchLoading = false
+        return
       }
-
-      return undefined
+      this.isSearchLoading = true
+      try {
+        const response = await getDataFromApi(
+          this.selectedApi,
+          value,
+          5, // ограничиваем до 5 результатов для дропа
+          1,
+        )
+        this.searchResults = response?.results || []
+        this.isShownDropDown = this.searchResults.length > 0
+      } catch (e) {
+        this.searchResults = []
+        this.isShownDropDown = false
+      } finally {
+        this.isSearchLoading = false
+      }
     },
-    onKeyup(event) {
-      if (event.code === 'ArrowDown') {
-        this.isKeyupArrowDown = true
-      }
+    onSelectFromSearch(name) {
+      this.selectedName = name
+      this.selectedItem = this.searchResults.find((item) => item[this.selectedField] === name)
+      this.imgURL = this.selectedItem?.image ? `${RESOURCE_URL}/${this.selectedItem.image}` : IMG_PLACEHOLDER
+      this.isShownDropDown = false
     },
     async getData() {
       this.isLoading = true
       const response = await getDataFromApi(
         this.selectedApi,
-        this.search,
+        '',
         this.pageSize,
         this.currentPage,
       )
@@ -268,7 +247,7 @@ export default {
         this.totalPages = response.pages || 1
         if (items.length > 0 && this.search === '') {
           this.selectedName = items[0].name
-          this.onSelect(items[0].name)
+          this.onSelectFromSelect(items[0].name)
         }
       }
       this.isLoading = false
@@ -289,8 +268,10 @@ export default {
     },
     clearSearch() {
       this.search = ''
-      // this.items = []
-      this.clearImgUrl() // Clear image when completely clearing search
+      this.searchResults = []
+      this.isShownDropDown = false
+      this.isSearchLoading = false
+      this.clearImgUrl()
     },
   },
 }
