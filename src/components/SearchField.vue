@@ -10,6 +10,7 @@
       debounce="500"
       @input="onInput"
       @keyup="onKeyup"
+      @click:clear="$emit('clear')"
     />
     <DropList
       class="drop-list"

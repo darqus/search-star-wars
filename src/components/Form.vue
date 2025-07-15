@@ -54,6 +54,7 @@
           :is-shown-drop-down="isShownDropDown"
           @search-input="onSearchInput"
           @select="onSelectFromSearch"
+          @clear="onClearSearchField"
         />
       </v-col>
     </v-row>
@@ -272,6 +273,13 @@ export default {
       this.isShownDropDown = false
       this.isSearchLoading = false
       this.clearImgUrl()
+    },
+    onClearSearchField() {
+      this.clearSearch()
+      this.selectedItem = null
+      this.selectedName = ''
+      this.imgURL = this.IMG_PLACEHOLDER
+      this.searchResults = []
     },
   },
 }
