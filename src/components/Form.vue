@@ -61,7 +61,7 @@
 
     <v-row style="position: relative">
       <v-col>
-        <template v-if="imgURL && imgURL !== IMG_PLACEHOLDER">
+        <template v-if="imgURL">
           <div class="wrapper">
             <div class="img" role="img" :aria-label="selectedApi">
               <a
@@ -74,7 +74,6 @@
                   :key="item"
                   :src="imgURL"
                   :alt="selectedApi"
-                  :onerror="`this.onerror=null;this.src='${IMG_PLACEHOLDER}';`"
                 />
               </a>
             </div>
@@ -103,7 +102,6 @@
 import {
   API_URL,
   RESOURCE_URL,
-  IMG_PLACEHOLDER,
   SEARCH_API_LIST,
   getDataFromApi,
 } from '@/utils/getDataFromApi'
@@ -121,7 +119,6 @@ const createInitialState = () => ({
   API_URL,
   HEADER_NAME_SHORT: process.env.VUE_APP_NAME_SHORT,
   HEADER_NAME_POSTFIX: process.env.VUE_APP_NAME_POSTFIX,
-  IMG_PLACEHOLDER,
   SEARCH_API_LIST,
   selectedApi: SEARCH_API_LIST[0].api,
   selectedField: SEARCH_API_LIST[0].searchFields[0],
@@ -131,7 +128,7 @@ const createInitialState = () => ({
   isShownDropDown: false,
   isKeyupArrowDown: false,
   defaultResult: '{}',
-  imgURL: IMG_PLACEHOLDER,
+  imgURL: '',
   isDialogShow: false,
   currentPage: 1,
   totalPages: 1,
@@ -200,8 +197,12 @@ export default {
     },
     onSelectFromSelect(name) {
       this.selectedName = name
-      this.selectedItem = this.items.find((item) => item[this.selectedField] === name)
-      this.imgURL = this.selectedItem?.image ? `${RESOURCE_URL}/${this.selectedItem.image}` : IMG_PLACEHOLDER
+      this.selectedItem = this.items.find(
+        (item) => item[this.selectedField] === name,
+      )
+      if (this.selectedItem?.image) {
+        this.imgURL = `${RESOURCE_URL}/${this.selectedItem.image}`
+      }
     },
     async onSearchInput(value) {
       this.search = value
@@ -230,8 +231,12 @@ export default {
     },
     onSelectFromSearch(name) {
       this.selectedName = name
-      this.selectedItem = this.searchResults.find((item) => item[this.selectedField] === name)
-      this.imgURL = this.selectedItem?.image ? `${RESOURCE_URL}/${this.selectedItem.image}` : IMG_PLACEHOLDER
+      this.selectedItem = this.searchResults.find(
+        (item) => item[this.selectedField] === name,
+      )
+      if (this.selectedItem?.image) {
+        this.imgURL = `${RESOURCE_URL}/${this.selectedItem.image}`
+      }
       this.isShownDropDown = false
     },
     async getData() {
@@ -262,7 +267,7 @@ export default {
       this.isDialogShow = value
     },
     clearImgUrl() {
-      this.imgURL = IMG_PLACEHOLDER
+      this.imgURL = ''
     },
     clearResult() {
       this.defaultResult = '{}'
@@ -272,13 +277,12 @@ export default {
       this.searchResults = []
       this.isShownDropDown = false
       this.isSearchLoading = false
-      this.clearImgUrl()
     },
     onClearSearchField() {
       this.clearSearch()
       this.selectedItem = null
       this.selectedName = ''
-      this.imgURL = this.IMG_PLACEHOLDER
+      this.clearImgUrl()
       this.searchResults = []
     },
   },
